@@ -1,6 +1,5 @@
-ECEn360_W15
+BYU ECEn 360 Electromagnetics - Winter 2015
 ===========
 
-BYU ECEn 360 Electromagnetics - Winter 2015
 
-*initial test*
+*initial test text - needs deleted later*

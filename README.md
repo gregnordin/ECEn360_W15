@@ -1,11 +1,11 @@
 BYU ECEn 360 Electromagnetics - Winter 2015
 -----------
 
-Instructor: [Greg Nordin](http://www.ee.byu.edu/faculty/nordin/)
+*Instructor*: [Greg Nordin](http://www.ee.byu.edu/faculty/nordin/)
 
-Content: IPython notebooks to supplement course material
+*Content*: IPython notebooks to supplement course material
 
-Usage:
+*Usage*:
 
 1. Download this repository by clicking on the "Download ZIP" button on the right.
 2. Put unzipped folder where you want it in your directory structure

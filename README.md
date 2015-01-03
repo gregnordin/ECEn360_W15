@@ -1,6 +1,9 @@
 BYU ECEn 360 Electromagnetics - Winter 2015
 ===========
 
+BYU ECEn 360 Electromagnetics - Winter 2015
+-----------
+
 **some bold text**
 
 *initial test text - needs deleted later*

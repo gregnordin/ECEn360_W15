@@ -15,7 +15,9 @@ BYU ECEn 360 Electromagnetics - Winter 2015
 6. Open the desired IPython Notebook file
 7. To execute an input cell in a notebook, place the cursor anywhere in the cell and type return while holding down the shift key
 
-**Just View Notebooks**: Click [here](http://nbviewer.ipython.org/github/gregnordin/ECEn360_W15/tree/master/notebooks/). Note these are **static** html pages (made with nbviewer.ipython.org) and are not executable.
+**Just View Notebooks**: 
+
+Click [here](http://nbviewer.ipython.org/github/gregnordin/ECEn360_W15/tree/master/notebooks/). Note these are **static** html pages (made with nbviewer.ipython.org) and are not executable.
 
 
 

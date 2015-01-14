@@ -1,0 +1,1727 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     73467,       1718]
+NotebookOptionsPosition[     68474,       1590]
+NotebookOutlinePosition[     68929,       1608]
+CellTagsIndexPosition[     68886,       1605]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ StyleBox[
+  RowBox[{"Definitions", " ", 
+   RowBox[{"(", 
+    RowBox[{"run", " ", "this", " ", "cell", " ", "first"}], ")"}]}], 
+  "Subtitle"]], "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ CellChangeTimes->{{3.5692075055549383`*^9, 3.5692075067664347`*^9}, 
+   3.569207937938444*^9, {3.630241871828268*^9, 3.630241876336792*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"freq", " ", "=", " ", "100*^6"}], "\[IndentingNewLine]", 
+ RowBox[{"lambda", " ", "=", " ", 
+  RowBox[{"3*^8", "/", "freq"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"alpha", " ", "=", " ", "0"}], " "}], "\[IndentingNewLine]", 
+ RowBox[{"TLineLength", " ", "=", " ", 
+  RowBox[{"10", "*", "lambda"}]}], "\[IndentingNewLine]", 
+ RowBox[{"AmplitudePlus", " ", "=", " ", "2"}], "\[IndentingNewLine]", 
+ RowBox[{"PhasePlus", " ", "=", " ", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"2", "*", 
+     RowBox[{"Pi", "/", "180"}]}], ")"}], "*", "0"}]}], "\[IndentingNewLine]", 
+ RowBox[{"AmplitudeMinus", " ", "=", " ", 
+  RowBox[{"AmplitudePlus", "*", "0.5"}]}], "\[IndentingNewLine]", 
+ RowBox[{"PhaseMinus", " ", "=", " ", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"2", "*", 
+     RowBox[{"Pi", "/", "180"}]}], ")"}], "*", "0"}]}], "\[IndentingNewLine]", 
+ RowBox[{"GammaL", " ", "=", " ", "0"}], "\[IndentingNewLine]"}], "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ CellChangeTimes->{{3.5692032541934566`*^9, 3.5692033141939096`*^9}, {
+   3.569203505472258*^9, 3.569203527615122*^9}, {3.569203695114881*^9, 
+   3.569203733266438*^9}, {3.569203769974154*^9, 3.569203770333427*^9}, {
+   3.569203822722212*^9, 3.5692038231901913`*^9}, {3.5692040957251043`*^9, 
+   3.569204133971126*^9}, {3.56920422214121*^9, 3.569204249808597*^9}, {
+   3.5692043460380383`*^9, 3.569204414086899*^9}, {3.5692044854481*^9, 
+   3.569204487222588*^9}, {3.5692072888244762`*^9, 3.569207347856449*^9}, 
+   3.5692079379385233`*^9, {3.569208003947391*^9, 3.569208005728807*^9}, {
+   3.5692080481215687`*^9, 3.56920805005445*^9}, 3.569208169024371*^9, {
+   3.569351750586979*^9, 3.569351754964197*^9}, {3.569351826927495*^9, 
+   3.569351872580579*^9}, {3.5698491062751837`*^9, 3.5698491123604727`*^9}, {
+   3.5698494994599247`*^9, 3.569849500416469*^9}}],
+
+Cell[BoxData["100000000"], "Output",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ CellChangeTimes->{{3.569203292553206*^9, 3.569203310617923*^9}, {
+   3.5692035100620317`*^9, 3.569203528380527*^9}, {3.569203724293522*^9, 
+   3.569203734229841*^9}, 3.569203771080823*^9, 3.569203824190506*^9, {
+   3.569204239938855*^9, 3.56920425031081*^9}, {3.569204358305533*^9, 
+   3.5692044162499313`*^9}, 3.5692044884296093`*^9, 3.5692073103235903`*^9, 
+   3.569207348613329*^9, 3.56920793793862*^9, 3.569208006778315*^9, 
+   3.569208052122095*^9, 3.569208170674821*^9, 3.569346911871132*^9, {
+   3.56935184721982*^9, 3.56935187403468*^9}, 3.569789959345767*^9, 
+   3.569849113451981*^9, 3.569849501820058*^9, 3.569850683350458*^9, 
+   3.569857167957597*^9, 3.598722732631298*^9, 3.629871930823697*^9, 
+   3.630241581647704*^9}],
+
+Cell[BoxData["3"], "Output",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ CellChangeTimes->{{3.569203292553206*^9, 3.569203310617923*^9}, {
+   3.5692035100620317`*^9, 3.569203528380527*^9}, {3.569203724293522*^9, 
+   3.569203734229841*^9}, 3.569203771080823*^9, 3.569203824190506*^9, {
+   3.569204239938855*^9, 3.56920425031081*^9}, {3.569204358305533*^9, 
+   3.5692044162499313`*^9}, 3.5692044884296093`*^9, 3.5692073103235903`*^9, 
+   3.569207348613329*^9, 3.56920793793862*^9, 3.569208006778315*^9, 
+   3.569208052122095*^9, 3.569208170674821*^9, 3.569346911871132*^9, {
+   3.56935184721982*^9, 3.56935187403468*^9}, 3.569789959345767*^9, 
+   3.569849113451981*^9, 3.569849501820058*^9, 3.569850683350458*^9, 
+   3.569857167957597*^9, 3.598722732631298*^9, 3.629871930823697*^9, 
+   3.630241581654323*^9}],
+
+Cell[BoxData["0"], "Output",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ CellChangeTimes->{{3.569203292553206*^9, 3.569203310617923*^9}, {
+   3.5692035100620317`*^9, 3.569203528380527*^9}, {3.569203724293522*^9, 
+   3.569203734229841*^9}, 3.569203771080823*^9, 3.569203824190506*^9, {
+   3.569204239938855*^9, 3.56920425031081*^9}, {3.569204358305533*^9, 
+   3.5692044162499313`*^9}, 3.5692044884296093`*^9, 3.5692073103235903`*^9, 
+   3.569207348613329*^9, 3.56920793793862*^9, 3.569208006778315*^9, 
+   3.569208052122095*^9, 3.569208170674821*^9, 3.569346911871132*^9, {
+   3.56935184721982*^9, 3.56935187403468*^9}, 3.569789959345767*^9, 
+   3.569849113451981*^9, 3.569849501820058*^9, 3.569850683350458*^9, 
+   3.569857167957597*^9, 3.598722732631298*^9, 3.629871930823697*^9, 
+   3.630241581658585*^9}],
+
+Cell[BoxData["30"], "Output",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ CellChangeTimes->{{3.569203292553206*^9, 3.569203310617923*^9}, {
+   3.5692035100620317`*^9, 3.569203528380527*^9}, {3.569203724293522*^9, 
+   3.569203734229841*^9}, 3.569203771080823*^9, 3.569203824190506*^9, {
+   3.569204239938855*^9, 3.56920425031081*^9}, {3.569204358305533*^9, 
+   3.5692044162499313`*^9}, 3.5692044884296093`*^9, 3.5692073103235903`*^9, 
+   3.569207348613329*^9, 3.56920793793862*^9, 3.569208006778315*^9, 
+   3.569208052122095*^9, 3.569208170674821*^9, 3.569346911871132*^9, {
+   3.56935184721982*^9, 3.56935187403468*^9}, 3.569789959345767*^9, 
+   3.569849113451981*^9, 3.569849501820058*^9, 3.569850683350458*^9, 
+   3.569857167957597*^9, 3.598722732631298*^9, 3.629871930823697*^9, 
+   3.63024158166219*^9}],
+
+Cell[BoxData["2"], "Output",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ CellChangeTimes->{{3.569203292553206*^9, 3.569203310617923*^9}, {
+   3.5692035100620317`*^9, 3.569203528380527*^9}, {3.569203724293522*^9, 
+   3.569203734229841*^9}, 3.569203771080823*^9, 3.569203824190506*^9, {
+   3.569204239938855*^9, 3.56920425031081*^9}, {3.569204358305533*^9, 
+   3.5692044162499313`*^9}, 3.5692044884296093`*^9, 3.5692073103235903`*^9, 
+   3.569207348613329*^9, 3.56920793793862*^9, 3.569208006778315*^9, 
+   3.569208052122095*^9, 3.569208170674821*^9, 3.569346911871132*^9, {
+   3.56935184721982*^9, 3.56935187403468*^9}, 3.569789959345767*^9, 
+   3.569849113451981*^9, 3.569849501820058*^9, 3.569850683350458*^9, 
+   3.569857167957597*^9, 3.598722732631298*^9, 3.629871930823697*^9, 
+   3.630241581665572*^9}],
+
+Cell[BoxData["0"], "Output",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ CellChangeTimes->{{3.569203292553206*^9, 3.569203310617923*^9}, {
+   3.5692035100620317`*^9, 3.569203528380527*^9}, {3.569203724293522*^9, 
+   3.569203734229841*^9}, 3.569203771080823*^9, 3.569203824190506*^9, {
+   3.569204239938855*^9, 3.56920425031081*^9}, {3.569204358305533*^9, 
+   3.5692044162499313`*^9}, 3.5692044884296093`*^9, 3.5692073103235903`*^9, 
+   3.569207348613329*^9, 3.56920793793862*^9, 3.569208006778315*^9, 
+   3.569208052122095*^9, 3.569208170674821*^9, 3.569346911871132*^9, {
+   3.56935184721982*^9, 3.56935187403468*^9}, 3.569789959345767*^9, 
+   3.569849113451981*^9, 3.569849501820058*^9, 3.569850683350458*^9, 
+   3.569857167957597*^9, 3.598722732631298*^9, 3.629871930823697*^9, 
+   3.630241581668852*^9}],
+
+Cell[BoxData["1.`"], "Output",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ CellChangeTimes->{{3.569203292553206*^9, 3.569203310617923*^9}, {
+   3.5692035100620317`*^9, 3.569203528380527*^9}, {3.569203724293522*^9, 
+   3.569203734229841*^9}, 3.569203771080823*^9, 3.569203824190506*^9, {
+   3.569204239938855*^9, 3.56920425031081*^9}, {3.569204358305533*^9, 
+   3.5692044162499313`*^9}, 3.5692044884296093`*^9, 3.5692073103235903`*^9, 
+   3.569207348613329*^9, 3.56920793793862*^9, 3.569208006778315*^9, 
+   3.569208052122095*^9, 3.569208170674821*^9, 3.569346911871132*^9, {
+   3.56935184721982*^9, 3.56935187403468*^9}, 3.569789959345767*^9, 
+   3.569849113451981*^9, 3.569849501820058*^9, 3.569850683350458*^9, 
+   3.569857167957597*^9, 3.598722732631298*^9, 3.629871930823697*^9, 
+   3.630241581672165*^9}],
+
+Cell[BoxData["0"], "Output",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ CellChangeTimes->{{3.569203292553206*^9, 3.569203310617923*^9}, {
+   3.5692035100620317`*^9, 3.569203528380527*^9}, {3.569203724293522*^9, 
+   3.569203734229841*^9}, 3.569203771080823*^9, 3.569203824190506*^9, {
+   3.569204239938855*^9, 3.56920425031081*^9}, {3.569204358305533*^9, 
+   3.5692044162499313`*^9}, 3.5692044884296093`*^9, 3.5692073103235903`*^9, 
+   3.569207348613329*^9, 3.56920793793862*^9, 3.569208006778315*^9, 
+   3.569208052122095*^9, 3.569208170674821*^9, 3.569346911871132*^9, {
+   3.56935184721982*^9, 3.56935187403468*^9}, 3.569789959345767*^9, 
+   3.569849113451981*^9, 3.569849501820058*^9, 3.569850683350458*^9, 
+   3.569857167957597*^9, 3.598722732631298*^9, 3.629871930823697*^9, 
+   3.630241581675476*^9}],
+
+Cell[BoxData["0"], "Output",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ CellChangeTimes->{{3.569203292553206*^9, 3.569203310617923*^9}, {
+   3.5692035100620317`*^9, 3.569203528380527*^9}, {3.569203724293522*^9, 
+   3.569203734229841*^9}, 3.569203771080823*^9, 3.569203824190506*^9, {
+   3.569204239938855*^9, 3.56920425031081*^9}, {3.569204358305533*^9, 
+   3.5692044162499313`*^9}, 3.5692044884296093`*^9, 3.5692073103235903`*^9, 
+   3.569207348613329*^9, 3.56920793793862*^9, 3.569208006778315*^9, 
+   3.569208052122095*^9, 3.569208170674821*^9, 3.569346911871132*^9, {
+   3.56935184721982*^9, 3.56935187403468*^9}, 3.569789959345767*^9, 
+   3.569849113451981*^9, 3.569849501820058*^9, 3.569850683350458*^9, 
+   3.569857167957597*^9, 3.598722732631298*^9, 3.629871930823697*^9, 
+   3.6302415816788588`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ StyleBox[
+  RowBox[{
+   SuperscriptBox["V", "+"], ",", " ", 
+   RowBox[{"Forward", " ", "Propagating", " ", "Wave"}]}], 
+  "Subtitle"]], "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10001.},
+ CellChangeTimes->{{3.569207630958703*^9, 3.5692076559272003`*^9}, {
+  3.569207690579824*^9, 3.5692077023440857`*^9}, {3.569207904607971*^9, 
+  3.56920791988398*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"Plot", "[", 
+    RowBox[{
+     RowBox[{"AmplitudePlus", "*", 
+      RowBox[{"Cos", "[", 
+       RowBox[{
+        RowBox[{"2", "*", "Pi", "*", "freq", " ", "*", "t"}], "-", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"2", "*", 
+           RowBox[{"Pi", "/", "lambda"}]}], ")"}], "*", "z"}], "+", 
+        "PhasePlus"}], "]"}], "*", 
+      RowBox[{"Exp", "[", 
+       RowBox[{
+        RowBox[{"-", "alpha"}], "*", 
+        RowBox[{"(", 
+         RowBox[{"TLineLength", "+", "z"}], ")"}]}], "]"}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"z", ",", 
+       RowBox[{"-", "TLineLength"}], ",", "0"}], "}"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", "AmplitudePlus"}], ",", " ", 
+     RowBox[{"AxesLabel", " ", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"z", " ", "[", "m", "]"}], ",", 
+        SuperscriptBox["V", "+"]}], "}"}]}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "0", ",", 
+     RowBox[{"10", "/", "freq"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"PhasePlus", ",", "0", ",", 
+     RowBox[{"2", "*", "Pi"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"alpha", ",", "0", ",", 
+     RowBox[{"1", "/", 
+      RowBox[{"(", 
+       RowBox[{"2", "*", "lambda"}], ")"}]}]}], "}"}]}], "]"}]], "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10001.},
+ CellChangeTimes->{{3.569203157959581*^9, 3.5692032483097973`*^9}, {
+   3.5692035573715477`*^9, 3.569203570000268*^9}, {3.569203602245716*^9, 
+   3.569203612529006*^9}, {3.569203646350628*^9, 3.56920366343906*^9}, {
+   3.569203742463503*^9, 3.569203749746757*^9}, {3.569203926569272*^9, 
+   3.569204044161705*^9}, {3.5692042621618357`*^9, 3.569204280625534*^9}, 
+   3.5692043716680803`*^9, {3.569204467184165*^9, 3.569204470129567*^9}, {
+   3.569204577007468*^9, 3.569204646492735*^9}, {3.5692046921043167`*^9, 
+   3.569204695575068*^9}, {3.56920473221672*^9, 3.5692047398358593`*^9}, {
+   3.5692053740939083`*^9, 3.569205390562232*^9}, 3.5692056811493998`*^9, 
+   3.5692079046080647`*^9, {3.569351888185317*^9, 3.5693518986911993`*^9}, {
+   3.569352032220998*^9, 3.569352038165389*^9}, {3.569352083791802*^9, 
+   3.569352092761071*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`alpha$$ = 
+    0.08833333333333333, $CellContext`PhasePlus$$ = 0, $CellContext`t$$ = 
+    4.636624336242676*^-8, Typeset`show$$ = True, Typeset`bookmarkList$$ = {},
+     Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`t$$], 0, 
+      Rational[1, 10000000]}, {
+      Hold[$CellContext`PhasePlus$$], 0, 2 Pi}, {
+      Hold[$CellContext`alpha$$], 0, 
+      Rational[1, 6]}}, Typeset`size$$ = {450., {140., 147.}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`t$7512$$ = 0, $CellContext`PhasePlus$7513$$ = 
+    0, $CellContext`alpha$7514$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`alpha$$ = 0, $CellContext`PhasePlus$$ = 
+        0, $CellContext`t$$ = 0}, "ControllerVariables" :> {
+        Hold[$CellContext`t$$, $CellContext`t$7512$$, 0], 
+        Hold[$CellContext`PhasePlus$$, $CellContext`PhasePlus$7513$$, 0], 
+        Hold[$CellContext`alpha$$, $CellContext`alpha$7514$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      Plot[$CellContext`AmplitudePlus 
+        Cos[2 Pi $CellContext`freq $CellContext`t$$ - (
+           2 (Pi/$CellContext`lambda)) $CellContext`z + \
+$CellContext`PhasePlus$$] 
+        Exp[(-$CellContext`alpha$$) ($CellContext`TLineLength + \
+$CellContext`z)], {$CellContext`z, -$CellContext`TLineLength, 0}, 
+        PlotRange -> $CellContext`AmplitudePlus, AxesLabel -> {
+          $CellContext`z[$CellContext`m], 
+          SuperPlus[$CellContext`V]}], 
+      "Specifications" :> {{$CellContext`t$$, 0, 
+         Rational[1, 10000000]}, {$CellContext`PhasePlus$$, 0, 2 
+         Pi}, {$CellContext`alpha$$, 0, 
+         Rational[1, 6]}}, "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{505., {246., 253.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellGroupingRules->{GroupTogetherGrouping, 10001.},
+ CellChangeTimes->{{3.5692040067182627`*^9, 3.56920404558539*^9}, 
+   3.569204281647901*^9, {3.569204373915913*^9, 3.5692043897069798`*^9}, 
+   3.56920447157092*^9, {3.5692045782298517`*^9, 3.5692046124554253`*^9}, 
+   3.569204648249423*^9, 3.569204743230836*^9, {3.569205391976831*^9, 
+   3.569205395828753*^9}, 3.569205682710935*^9, 3.569206884627515*^9, 
+   3.569207904608162*^9, 3.569208019547826*^9, 3.569245873843079*^9, {
+   3.569346887926641*^9, 3.569346914581992*^9}, 3.569351905065215*^9, 
+   3.569352041918159*^9, 3.569352093832335*^9, 3.569857177090459*^9, 
+   3.598722755890307*^9, 3.6298719377768307`*^9, 3.630241590832223*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ StyleBox[
+  RowBox[{
+   SuperscriptBox["V", "-"], ",", " ", 
+   RowBox[{"Backward", " ", "Propagating", " ", "Wave"}]}], 
+  "Subtitle"]], "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ CellChangeTimes->{{3.569207630958703*^9, 3.5692077136839657`*^9}, 
+   3.569207883456278*^9, {3.5692079228930283`*^9, 3.569207924548696*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"Plot", "[", 
+    RowBox[{
+     RowBox[{"AmplitudeMinus", "*", 
+      RowBox[{"Cos", "[", 
+       RowBox[{
+        RowBox[{"2", "*", "Pi", "*", "freq", " ", "*", "t"}], "+", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"2", "*", 
+           RowBox[{"Pi", "/", "lambda"}]}], ")"}], "*", "z"}], "+", 
+        "PhaseMinus"}], "]"}], "*", 
+      RowBox[{"Exp", "[", 
+       RowBox[{"alpha", "*", "z"}], "]"}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"z", ",", 
+       RowBox[{"-", "TLineLength"}], ",", "0"}], "}"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", "AmplitudePlus"}], ",", " ", 
+     RowBox[{"AxesLabel", " ", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"z", " ", "[", "m", "]"}], ",", 
+        SuperscriptBox["V", "-"]}], "}"}]}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "0", ",", 
+     RowBox[{"10", "/", "freq"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"PhaseMinus", ",", "0", ",", 
+     RowBox[{"2", "*", "Pi"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"alpha", ",", "0", ",", 
+     RowBox[{"1", "/", 
+      RowBox[{"(", 
+       RowBox[{"2", "*", "lambda"}], ")"}]}]}], "}"}]}], "]"}]], "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ CellChangeTimes->{{3.569206916877499*^9, 3.569206934531825*^9}, {
+   3.569206987734139*^9, 3.569207003155506*^9}, 3.569207041689844*^9, {
+   3.569207281729883*^9, 3.569207283768654*^9}, {3.569207367060031*^9, 
+   3.569207386962969*^9}, 3.569207883456387*^9, {3.569352356012866*^9, 
+   3.5693523612672358`*^9}, {3.5693524205590553`*^9, 3.569352438711882*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`alpha$$ = 
+    0.06333333333333332, $CellContext`PhaseMinus$$ = 0., $CellContext`t$$ = 
+    1.960658073425293*^-8, Typeset`show$$ = True, Typeset`bookmarkList$$ = {},
+     Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`t$$], 0, 
+      Rational[1, 10000000]}, {
+      Hold[$CellContext`PhaseMinus$$], 0, 2 Pi}, {
+      Hold[$CellContext`alpha$$], 0, 
+      Rational[1, 6]}}, Typeset`size$$ = {450., {139., 147.}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`t$9403$$ = 0, $CellContext`PhaseMinus$9404$$ = 
+    0, $CellContext`alpha$9405$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`alpha$$ = 0, $CellContext`PhaseMinus$$ = 
+        0, $CellContext`t$$ = 0}, "ControllerVariables" :> {
+        Hold[$CellContext`t$$, $CellContext`t$9403$$, 0], 
+        Hold[$CellContext`PhaseMinus$$, $CellContext`PhaseMinus$9404$$, 0], 
+        Hold[$CellContext`alpha$$, $CellContext`alpha$9405$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      Plot[($CellContext`AmplitudeMinus 
+         Cos[((2 Pi) $CellContext`freq) $CellContext`t$$ + (
+             2 (Pi/$CellContext`lambda)) $CellContext`z + \
+$CellContext`PhaseMinus$$]) 
+        Exp[$CellContext`alpha$$ $CellContext`z], {$CellContext`z, \
+-$CellContext`TLineLength, 0}, PlotRange -> $CellContext`AmplitudePlus, 
+        AxesLabel -> {
+          $CellContext`z[$CellContext`m], 
+          SuperMinus[$CellContext`V]}], 
+      "Specifications" :> {{$CellContext`t$$, 0, 
+         Rational[1, 10000000]}, {$CellContext`PhaseMinus$$, 0, 2 
+         Pi}, {$CellContext`alpha$$, 0, 
+         Rational[1, 6]}}, "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{505., {246., 253.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ CellChangeTimes->{{3.56920692089573*^9, 3.569206936254615*^9}, 
+   3.569207006687223*^9, 3.569207044451989*^9, 3.569207390791616*^9, 
+   3.569207883456483*^9, 3.569208196712714*^9, 3.5693469212233686`*^9, 
+   3.569352371462989*^9, 3.569352440972093*^9, 3.569857181419503*^9, 
+   3.598722781890856*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Plot", "::", "plln"}], "MessageName"], ":", 
+  " ", "\<\"Limiting value \[NoBreak]\\!\\(-TLineLength\\)\[NoBreak] in \
+\[NoBreak]\\!\\({z, \\(\\(-TLineLength\\)\\), 0}\\)\[NoBreak] is not a \
+machine-sized real number. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/plln\\\", ButtonNote -> \
+\\\"Plot::plln\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.6029650278766127`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "prng"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Value of option PlotRange -> \[NoBreak]\\!\\(AmplitudePlus\
+\\)\[NoBreak] is not All, Full, Automatic, a positive machine number, or an \
+appropriate list of range specifications.\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.6302415657856073`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Plot", "::", "plln"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Limiting value \[NoBreak]\\!\\(-TLineLength\\)\[NoBreak] \
+in \[NoBreak]\\!\\({z, \\(\\(-TLineLength\\)\\), 0}\\)\[NoBreak] is not a \
+machine-sized real number. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/plln\\\", ButtonNote -> \
+\\\"Plot::plln\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.630241565857148*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "prng"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Value of option PlotRange -> \[NoBreak]\\!\\(AmplitudePlus\
+\\)\[NoBreak] is not All, Full, Automatic, a positive machine number, or an \
+appropriate list of range specifications.\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.630241565928073*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Plot", "::", "plln"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Limiting value \[NoBreak]\\!\\(-TLineLength\\)\[NoBreak] \
+in \[NoBreak]\\!\\({z, \\(\\(-TLineLength\\)\\), 0}\\)\[NoBreak] is not a \
+machine-sized real number. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/plln\\\", ButtonNote -> \
+\\\"Plot::plln\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.6302415659933233`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ StyleBox[
+  RowBox[{
+   SuperscriptBox["V", "+"], "and", " ", 
+   SuperscriptBox["V", "-"]}], "Subtitle"]], "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10001.},
+ CellChangeTimes->{{3.56920775071134*^9, 3.569207769555879*^9}, 
+   3.569207845776689*^9}],
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"Column", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"Plot", "[", 
+       RowBox[{
+        RowBox[{"AmplitudePlus", "*", 
+         RowBox[{"Cos", "[", 
+          RowBox[{
+           RowBox[{"2", "*", "Pi", "*", "freq", " ", "*", "t"}], "-", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"2", "*", 
+              RowBox[{"Pi", "/", "lambda"}]}], ")"}], "*", "z"}], "+", 
+           "PhasePlus"}], "]"}], "*", 
+         RowBox[{"Exp", "[", 
+          RowBox[{
+           RowBox[{"-", "alpha"}], "*", 
+           RowBox[{"(", 
+            RowBox[{"TLineLength", "+", "z"}], ")"}]}], "]"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"z", ",", 
+          RowBox[{"-", "TLineLength"}], ",", "0"}], "}"}], ",", 
+        RowBox[{"PlotRange", "\[Rule]", "AmplitudePlus"}], ",", " ", 
+        RowBox[{"AxesLabel", " ", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"z", " ", "[", "m", "]"}], ",", 
+           SuperscriptBox["V", "+"]}], "}"}]}], ",", 
+        RowBox[{"ImageSize", "\[Rule]", " ", "Medium"}]}], "]"}], ",", 
+      RowBox[{"Plot", "[", 
+       RowBox[{
+        RowBox[{"AmplitudePlus", "*", 
+         RowBox[{"Exp", "[", 
+          RowBox[{
+           RowBox[{"-", "alpha"}], "*", 
+           RowBox[{"(", 
+            RowBox[{"TLineLength", "+", "0"}], ")"}]}], "]"}], "*", "GammaL", 
+         "*", 
+         RowBox[{"Cos", "[", 
+          RowBox[{
+           RowBox[{"2", "*", "Pi", "*", "freq", " ", "*", "t"}], "+", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"2", "*", 
+              RowBox[{"Pi", "/", "lambda"}]}], ")"}], "*", "z"}], "+", 
+           "PhaseMinus"}], "]"}], "*", 
+         RowBox[{"Exp", "[", 
+          RowBox[{"alpha", "*", "z"}], "]"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"z", ",", 
+          RowBox[{"-", "TLineLength"}], ",", "0"}], "}"}], ",", 
+        RowBox[{"PlotRange", "\[Rule]", "AmplitudePlus"}], ",", " ", 
+        RowBox[{"AxesLabel", " ", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"z", " ", "[", "m", "]"}], ",", 
+           SuperscriptBox["V", "-"]}], "}"}]}], ",", 
+        RowBox[{"ImageSize", "\[Rule]", " ", "Medium"}]}], "]"}]}], "}"}], 
+    "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "0", ",", 
+     RowBox[{"10", "/", "freq"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"GammaL", ",", 
+     RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"alpha", ",", "0", ",", 
+     RowBox[{"1", "/", 
+      RowBox[{"(", 
+       RowBox[{"2", "*", "lambda"}], ")"}]}]}], "}"}]}], "]"}]], "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10001.},
+ CellChangeTimes->{{3.569207242255149*^9, 3.5692072577978277`*^9}, 
+   3.569207431168214*^9, 3.569207845776795*^9, {3.569352479763033*^9, 
+   3.569352544613278*^9}, 3.569352597317655*^9, {3.5693526492516003`*^9, 
+   3.5693526968883553`*^9}, {3.569352752193087*^9, 3.569352753240375*^9}, {
+   3.5693530072312813`*^9, 3.569353019003194*^9}, {3.569353055819154*^9, 
+   3.569353075940996*^9}, {3.569353111926477*^9, 3.5693531123950653`*^9}, 
+   3.569353185800905*^9, {3.5693581691282253`*^9, 3.569358208340229*^9}, {
+   3.569849142620998*^9, 3.569849162308878*^9}, {3.569849279238347*^9, 
+   3.5698492842556353`*^9}, {3.569849324715417*^9, 3.569849325250808*^9}, {
+   3.569849359531415*^9, 3.569849367171687*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`alpha$$ = 
+    0.03383333333333333, $CellContext`GammaL$$ = 1., $CellContext`t$$ = 
+    3.145217895507812*^-8, Typeset`show$$ = True, Typeset`bookmarkList$$ = {},
+     Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`t$$], 0, 
+      Rational[1, 10000000]}, {
+      Hold[$CellContext`GammaL$$], -1, 1}, {
+      Hold[$CellContext`alpha$$], 0, 
+      Rational[1, 6]}}, Typeset`size$$ = {
+    450., {286.41754150390625`, 293.58245849609375`}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`t$12843$$ = 0, $CellContext`GammaL$12844$$ = 
+    0, $CellContext`alpha$12845$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`alpha$$ = 
+        0, $CellContext`GammaL$$ = -1, $CellContext`t$$ = 0}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`t$$, $CellContext`t$12843$$, 0], 
+        Hold[$CellContext`GammaL$$, $CellContext`GammaL$12844$$, 0], 
+        Hold[$CellContext`alpha$$, $CellContext`alpha$12845$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Column[{
+         Plot[($CellContext`AmplitudePlus 
+           Cos[((2 Pi) $CellContext`freq) $CellContext`t$$ - (
+              2 (Pi/$CellContext`lambda)) $CellContext`z + \
+$CellContext`PhasePlus]) 
+          Exp[(-$CellContext`alpha$$) ($CellContext`TLineLength + \
+$CellContext`z)], {$CellContext`z, -$CellContext`TLineLength, 0}, 
+          PlotRange -> $CellContext`AmplitudePlus, AxesLabel -> {
+            $CellContext`z[$CellContext`m], 
+            SuperPlus[$CellContext`V]}, ImageSize -> Medium], 
+         Plot[((($CellContext`AmplitudePlus 
+             Exp[(-$CellContext`alpha$$) ($CellContext`TLineLength + 
+                0)]) $CellContext`GammaL$$) 
+           Cos[((2 Pi) $CellContext`freq) $CellContext`t$$ + (
+               2 (Pi/$CellContext`lambda)) $CellContext`z + \
+$CellContext`PhaseMinus]) 
+          Exp[$CellContext`alpha$$ $CellContext`z], {$CellContext`z, \
+-$CellContext`TLineLength, 0}, PlotRange -> $CellContext`AmplitudePlus, 
+          AxesLabel -> {
+            $CellContext`z[$CellContext`m], 
+            SuperMinus[$CellContext`V]}, ImageSize -> Medium]}], 
+      "Specifications" :> {{$CellContext`t$$, 0, 
+         Rational[1, 10000000]}, {$CellContext`GammaL$$, -1, 
+         1}, {$CellContext`alpha$$, 0, 
+         Rational[1, 6]}}, "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{505., {427., 434.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{3.569849371816104*^9, 3.56984950906837*^9, 
+  3.56985718939675*^9, 3.59872279966385*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Plot", "::", "plln"}], "MessageName"], ":", 
+  " ", "\<\"Limiting value \[NoBreak]\\!\\(-TLineLength\\)\[NoBreak] in \
+\[NoBreak]\\!\\({z, \\(\\(-TLineLength\\)\\), 0}\\)\[NoBreak] is not a \
+machine-sized real number. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/plln\\\", ButtonNote -> \
+\\\"Plot::plln\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.602965028004847*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Plot", "::", "plln"}], "MessageName"], ":", 
+  " ", "\<\"Limiting value \[NoBreak]\\!\\(-TLineLength\\)\[NoBreak] in \
+\[NoBreak]\\!\\({z, \\(\\(-TLineLength\\)\\), 0}\\)\[NoBreak] is not a \
+machine-sized real number. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/plln\\\", ButtonNote -> \
+\\\"Plot::plln\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.602965028037992*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "prng"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Value of option PlotRange -> \[NoBreak]\\!\\(AmplitudePlus\
+\\)\[NoBreak] is not All, Full, Automatic, a positive machine number, or an \
+appropriate list of range specifications.\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.6302415661957903`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Plot", "::", "plln"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Limiting value \[NoBreak]\\!\\(-TLineLength\\)\[NoBreak] \
+in \[NoBreak]\\!\\({z, \\(\\(-TLineLength\\)\\), 0}\\)\[NoBreak] is not a \
+machine-sized real number. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/plln\\\", ButtonNote -> \
+\\\"Plot::plln\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.630241566891699*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "prng"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Value of option PlotRange -> \[NoBreak]\\!\\(AmplitudePlus\
+\\)\[NoBreak] is not All, Full, Automatic, a positive machine number, or an \
+appropriate list of range specifications.\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.630241567000101*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Plot", "::", "plln"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Limiting value \[NoBreak]\\!\\(-TLineLength\\)\[NoBreak] \
+in \[NoBreak]\\!\\({z, \\(\\(-TLineLength\\)\\), 0}\\)\[NoBreak] is not a \
+machine-sized real number. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/plln\\\", ButtonNote -> \
+\\\"Plot::plln\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.6302415670602903`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "prng"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Value of option PlotRange -> \[NoBreak]\\!\\(AmplitudePlus\
+\\)\[NoBreak] is not All, Full, Automatic, a positive machine number, or an \
+appropriate list of range specifications.\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.630241567122942*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Further output of \[NoBreak]\\!\\(\\*StyleBox[\\(General \
+:: prng\\), \\\"MessageName\\\"]\\)\[NoBreak] will be suppressed during this \
+calculation. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/stop\\\", ButtonNote -> \
+\\\"General::stop\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.630241567173678*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Plot", "::", "plln"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Limiting value \[NoBreak]\\!\\(-TLineLength\\)\[NoBreak] \
+in \[NoBreak]\\!\\({z, \\(\\(-TLineLength\\)\\), 0}\\)\[NoBreak] is not a \
+machine-sized real number. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/plln\\\", ButtonNote -> \
+\\\"Plot::plln\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.6302415672393837`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Further output of \[NoBreak]\\!\\(\\*StyleBox[\\(Plot :: \
+plln\\), \\\"MessageName\\\"]\\)\[NoBreak] will be suppressed during this \
+calculation. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/stop\\\", ButtonNote -> \
+\\\"General::stop\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.630241567244026*^9}],
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"Plot", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"AmplitudePlus", "*", 
+       RowBox[{"Cos", "[", 
+        RowBox[{
+         RowBox[{"2", "*", "Pi", "*", "freq", " ", "*", "t"}], "-", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"2", "*", 
+            RowBox[{"Pi", "/", "lambda"}]}], ")"}], "*", "z"}], "+", 
+         "PhasePlus"}], "]"}], "*", 
+       RowBox[{"Exp", "[", 
+        RowBox[{
+         RowBox[{"-", "alpha"}], "*", 
+         RowBox[{"(", 
+          RowBox[{"TLineLength", "+", "z"}], ")"}]}], "]"}]}], "+", " ", 
+      RowBox[{"AmplitudePlus", "*", 
+       RowBox[{"Exp", "[", 
+        RowBox[{
+         RowBox[{"-", "alpha"}], "*", 
+         RowBox[{"(", 
+          RowBox[{"TLineLength", "+", "0"}], ")"}]}], "]"}], "*", "GammaL", 
+       "*", 
+       RowBox[{"Cos", "[", 
+        RowBox[{
+         RowBox[{"2", "*", "Pi", "*", "freq", " ", "*", "t"}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"2", "*", 
+            RowBox[{"Pi", "/", "lambda"}]}], ")"}], "*", "z"}], "+", 
+         "PhaseMinus"}], "]"}], "*", 
+       RowBox[{"Exp", "[", 
+        RowBox[{"alpha", "*", "z"}], "]"}]}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"z", ",", 
+       RowBox[{"-", "TLineLength"}], ",", "0"}], "}"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"2", "*", "AmplitudePlus"}]}], ",", " ", 
+     RowBox[{"AxesLabel", " ", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"z", " ", "[", "m", "]"}], ",", 
+        SuperscriptBox["V", "-"]}], "}"}]}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "0", ",", 
+     RowBox[{"10", "/", "freq"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"GammaL", ",", 
+     RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"alpha", ",", "0", ",", 
+     RowBox[{"1", "/", 
+      RowBox[{"(", 
+       RowBox[{"2", "*", "lambda"}], ")"}]}]}], "}"}]}], "]"}]], "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10001.},
+ CellChangeTimes->{{3.569207242255149*^9, 3.5692072577978277`*^9}, 
+   3.569207431168214*^9, 3.569207845776795*^9, {3.569352479763033*^9, 
+   3.569352544613278*^9}, 3.569352597317655*^9, {3.5693526492516003`*^9, 
+   3.5693526968883553`*^9}, {3.569352752193087*^9, 3.569352753240375*^9}, {
+   3.569352837757985*^9, 3.5693528394598017`*^9}, {3.569352871649396*^9, 
+   3.569352912215016*^9}, {3.569352952985297*^9, 3.569352963852337*^9}, 
+   3.569353225508357*^9, {3.5693532681627293`*^9, 3.569353268395609*^9}, {
+   3.569849434051301*^9, 3.569849453333465*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`alpha$$ = 0., $CellContext`GammaL$$ = 
+    0.5, $CellContext`t$$ = 4.653258230590609*^-9, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`t$$], 0, 
+      Rational[1, 10000000]}, {
+      Hold[$CellContext`GammaL$$], -1, 1}, {
+      Hold[$CellContext`alpha$$], 0, 
+      Rational[1, 6]}}, Typeset`size$$ = {450., {139., 147.}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`t$36530$$ = 0, $CellContext`GammaL$36531$$ = 
+    0, $CellContext`alpha$36532$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`alpha$$ = 
+        0, $CellContext`GammaL$$ = -1, $CellContext`t$$ = 0}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`t$$, $CellContext`t$36530$$, 0], 
+        Hold[$CellContext`GammaL$$, $CellContext`GammaL$36531$$, 0], 
+        Hold[$CellContext`alpha$$, $CellContext`alpha$36532$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      Plot[($CellContext`AmplitudePlus 
+          Cos[((2 Pi) $CellContext`freq) $CellContext`t$$ - (
+             2 (Pi/$CellContext`lambda)) $CellContext`z + \
+$CellContext`PhasePlus]) 
+         Exp[(-$CellContext`alpha$$) ($CellContext`TLineLength + \
+$CellContext`z)] + ((($CellContext`AmplitudePlus 
+            Exp[(-$CellContext`alpha$$) ($CellContext`TLineLength + 
+               0)]) $CellContext`GammaL$$) 
+          Cos[((2 Pi) $CellContext`freq) $CellContext`t$$ + (
+              2 (Pi/$CellContext`lambda)) $CellContext`z + \
+$CellContext`PhaseMinus]) 
+         Exp[$CellContext`alpha$$ $CellContext`z], {$CellContext`z, \
+-$CellContext`TLineLength, 0}, PlotRange -> 2 $CellContext`AmplitudePlus, 
+        AxesLabel -> {
+          $CellContext`z[$CellContext`m], 
+          SuperMinus[$CellContext`V]}], 
+      "Specifications" :> {{$CellContext`t$$, 0, 
+         Rational[1, 10000000]}, {$CellContext`GammaL$$, -1, 
+         1}, {$CellContext`alpha$$, 0, 
+         Rational[1, 6]}}, "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{505., {263., 270.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Input",
+ CellChangeTimes->{{3.5989632540616283`*^9, 3.598963256238031*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Plot", "::", "plln"}], "MessageName"], ":", 
+  " ", "\<\"Limiting value \[NoBreak]\\!\\(-TLineLength\\)\[NoBreak] in \
+\[NoBreak]\\!\\({z, \\(\\(-TLineLength\\)\\), 0}\\)\[NoBreak] is not a \
+machine-sized real number. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/plln\\\", ButtonNote -> \
+\\\"Plot::plln\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.602965028206276*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "prng"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Value of option PlotRange -> \[NoBreak]\\!\\(2\\\\ \
+AmplitudePlus\\)\[NoBreak] is not All, Full, Automatic, a positive machine \
+number, or an appropriate list of range specifications.\"\>"}]], "Message", \
+"MSG",
+ CellChangeTimes->{3.630241567447402*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Plot", "::", "plln"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Limiting value \[NoBreak]\\!\\(-TLineLength\\)\[NoBreak] \
+in \[NoBreak]\\!\\({z, \\(\\(-TLineLength\\)\\), 0}\\)\[NoBreak] is not a \
+machine-sized real number. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/plln\\\", ButtonNote -> \
+\\\"Plot::plln\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.630241567507965*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "prng"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Value of option PlotRange -> \[NoBreak]\\!\\(2\\\\ \
+AmplitudePlus\\)\[NoBreak] is not All, Full, Automatic, a positive machine \
+number, or an appropriate list of range specifications.\"\>"}]], "Message", \
+"MSG",
+ CellChangeTimes->{3.6302415675760193`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Plot", "::", "plln"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Limiting value \[NoBreak]\\!\\(-TLineLength\\)\[NoBreak] \
+in \[NoBreak]\\!\\({z, \\(\\(-TLineLength\\)\\), 0}\\)\[NoBreak] is not a \
+machine-sized real number. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/plln\\\", ButtonNote -> \
+\\\"Plot::plln\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.630241567640098*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"Plot", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"AmplitudePlus", "*", 
+       RowBox[{"Cos", "[", 
+        RowBox[{
+         RowBox[{"2", "*", "Pi", "*", "freq", " ", "*", "t"}], "-", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"2", "*", 
+            RowBox[{"Pi", "/", "lambda"}]}], ")"}], "*", "z"}], "+", 
+         "PhasePlus"}], "]"}], "*", 
+       RowBox[{"Exp", "[", 
+        RowBox[{
+         RowBox[{"-", "alpha"}], "*", 
+         RowBox[{"(", 
+          RowBox[{"TLineLength", "+", "z"}], ")"}]}], "]"}]}], "+", " ", 
+      RowBox[{"AmplitudePlus", "*", 
+       RowBox[{"Exp", "[", 
+        RowBox[{
+         RowBox[{"-", "alpha"}], "*", 
+         RowBox[{"(", 
+          RowBox[{"TLineLength", "+", "0"}], ")"}]}], "]"}], "*", "GammaL", 
+       "*", 
+       RowBox[{"Cos", "[", 
+        RowBox[{
+         RowBox[{"2", "*", "Pi", "*", "freq", " ", "*", "t"}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"2", "*", 
+            RowBox[{"Pi", "/", "lambda"}]}], ")"}], "*", "z"}], "+", 
+         "PhaseMinus"}], "]"}], "*", 
+       RowBox[{"Exp", "[", 
+        RowBox[{"alpha", "*", "z"}], "]"}]}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"z", ",", 
+       RowBox[{
+        RowBox[{"-", "TLineLength"}], "/", "5"}], ",", "0"}], "}"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"2", "*", "AmplitudePlus"}]}], ",", " ", 
+     RowBox[{"AxesLabel", " ", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"z", " ", "[", "m", "]"}], ",", 
+        SuperscriptBox["V", "-"]}], "}"}]}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "0", ",", 
+     RowBox[{"10", "/", "freq"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"GammaL", ",", 
+     RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"alpha", ",", "0", ",", 
+     RowBox[{"1", "/", 
+      RowBox[{"(", 
+       RowBox[{"2", "*", "lambda"}], ")"}]}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.5989632703718557`*^9, 3.59896327126476*^9}, {
+  3.59896332730063*^9, 3.598963328730611*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`alpha$$ = 0, $CellContext`GammaL$$ = 
+    0, $CellContext`t$$ = 8.457855905151404*^-8, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`t$$], 0, 
+      Rational[1, 10000000]}, {
+      Hold[$CellContext`GammaL$$], -1, 1}, {
+      Hold[$CellContext`alpha$$], 0, 
+      Rational[1, 6]}}, Typeset`size$$ = {450., {140., 147.}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`t$146862$$ = 0, $CellContext`GammaL$146863$$ = 
+    0, $CellContext`alpha$146864$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`alpha$$ = 
+        0, $CellContext`GammaL$$ = -1, $CellContext`t$$ = 0}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`t$$, $CellContext`t$146862$$, 0], 
+        Hold[$CellContext`GammaL$$, $CellContext`GammaL$146863$$, 0], 
+        Hold[$CellContext`alpha$$, $CellContext`alpha$146864$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      Plot[($CellContext`AmplitudePlus 
+          Cos[((2 Pi) $CellContext`freq) $CellContext`t$$ - (
+             2 (Pi/$CellContext`lambda)) $CellContext`z + \
+$CellContext`PhasePlus]) 
+         Exp[(-$CellContext`alpha$$) ($CellContext`TLineLength + \
+$CellContext`z)] + ((($CellContext`AmplitudePlus 
+            Exp[(-$CellContext`alpha$$) ($CellContext`TLineLength + 
+               0)]) $CellContext`GammaL$$) 
+          Cos[((2 Pi) $CellContext`freq) $CellContext`t$$ + (
+              2 (Pi/$CellContext`lambda)) $CellContext`z + \
+$CellContext`PhaseMinus]) 
+         Exp[$CellContext`alpha$$ $CellContext`z], {$CellContext`z, \
+(-$CellContext`TLineLength)/5, 0}, PlotRange -> 2 $CellContext`AmplitudePlus, 
+        AxesLabel -> {
+          $CellContext`z[$CellContext`m], 
+          SuperMinus[$CellContext`V]}], 
+      "Specifications" :> {{$CellContext`t$$, 0, 
+         Rational[1, 10000000]}, {$CellContext`GammaL$$, -1, 
+         1}, {$CellContext`alpha$$, 0, 
+         Rational[1, 6]}}, "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{505., {246., 253.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{3.5989632782583923`*^9, 3.59896333081575*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Plot", "::", "plln"}], "MessageName"], ":", 
+  " ", "\<\"Limiting value \[NoBreak]\\!\\(-\\(\\(TLineLength\\/5\\)\\)\\)\
+\[NoBreak] in \[NoBreak]\\!\\({z, \\(\\(-\\(\\(TLineLength\\/5\\)\\)\\)\\), \
+0}\\)\[NoBreak] is not a machine-sized real number. \\!\\(\\*ButtonBox[\\\"\
+\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/plln\\\", ButtonNote -> \
+\\\"Plot::plln\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.6029650283200827`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "prng"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Value of option PlotRange -> \[NoBreak]\\!\\(2\\\\ \
+AmplitudePlus\\)\[NoBreak] is not All, Full, Automatic, a positive machine \
+number, or an appropriate list of range specifications.\"\>"}]], "Message", \
+"MSG",
+ CellChangeTimes->{3.630241567748108*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Plot", "::", "plln"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Limiting value \
+\[NoBreak]\\!\\(-\\(\\(TLineLength\\/5\\)\\)\\)\[NoBreak] in \
+\[NoBreak]\\!\\({z, \\(\\(-\\(\\(TLineLength\\/5\\)\\)\\)\\), 0}\\)\[NoBreak] \
+is not a machine-sized real number. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\
+\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/plln\\\", ButtonNote -> \
+\\\"Plot::plln\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.6302415678120947`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "prng"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Value of option PlotRange -> \[NoBreak]\\!\\(2\\\\ \
+AmplitudePlus\\)\[NoBreak] is not All, Full, Automatic, a positive machine \
+number, or an appropriate list of range specifications.\"\>"}]], "Message", \
+"MSG",
+ CellChangeTimes->{3.630241567877728*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Plot", "::", "plln"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Limiting value \
+\[NoBreak]\\!\\(-\\(\\(TLineLength\\/5\\)\\)\\)\[NoBreak] in \
+\[NoBreak]\\!\\({z, \\(\\(-\\(\\(TLineLength\\/5\\)\\)\\)\\), 0}\\)\[NoBreak] \
+is not a machine-sized real number. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\
+\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/plln\\\", ButtonNote -> \
+\\\"Plot::plln\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.630241567942103*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["Temporary"], "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10002.},
+ CellChangeTimes->{{3.569208433888516*^9, 3.569208442238935*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Animate", "[", 
+  RowBox[{
+   RowBox[{"Plot", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"AmplitudePlus", "*", 
+       RowBox[{"Cos", "[", 
+        RowBox[{
+         RowBox[{"2", "*", "Pi", "*", "freq", " ", "*", "t"}], "-", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"2", "*", 
+            RowBox[{"Pi", "/", "lambda"}]}], ")"}], "*", "z"}], "+", 
+         "PhasePlus"}], "]"}], "*", 
+       RowBox[{"Exp", "[", 
+        RowBox[{
+         RowBox[{"-", "alpha"}], "*", "z"}], "]"}]}], "+", 
+      RowBox[{"AmplitudeMinus", "*", 
+       RowBox[{"Cos", "[", 
+        RowBox[{
+         RowBox[{"2", "*", "Pi", "*", "freq", " ", "*", "t"}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"2", "*", 
+            RowBox[{"Pi", "/", "lambda"}]}], ")"}], "*", "z"}], "+", 
+         "PhaseMinus"}], "]"}], "*", 
+       RowBox[{"Exp", "[", 
+        RowBox[{"alpha", "*", 
+         RowBox[{"(", 
+          RowBox[{"z", "-", "TLineLength"}], ")"}]}], "]"}]}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"z", ",", "0", ",", "TLineLength"}], "}"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"2", "*", "AmplitudePlus"}]}], ",", " ", 
+     RowBox[{"AxesLabel", " ", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"z", " ", "[", "m", "]"}], ",", 
+        SuperscriptBox["V", "+"]}], "}"}]}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "0", ",", 
+     RowBox[{"10", "/", "freq"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"PhasePlus", ",", "0", ",", 
+     RowBox[{"2", "*", "Pi"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"alpha", ",", "0", ",", 
+     RowBox[{"1", "/", 
+      RowBox[{"(", 
+       RowBox[{"2", "*", "lambda"}], ")"}]}]}], "}"}], ",", 
+   RowBox[{"AnimationRunning", "\[Rule]", "False"}]}], "]"}]], "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10002.},
+ CellChangeTimes->{{3.56920835438179*^9, 3.569208378044634*^9}, 
+   3.5692084422390337`*^9}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`alpha$$ = 0., $CellContext`PhasePlus$$ = 
+    0, $CellContext`t$$ = 1.4824695587158204`*^-8, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`t$$], 0, 
+      Rational[1, 10000000]}, {
+      Hold[$CellContext`PhasePlus$$], 0, 2 Pi}, {
+      Hold[$CellContext`alpha$$], 0, 
+      Rational[1, 6]}}, Typeset`size$$ = {450., {137., 145.}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`t$67132$$ = 0, $CellContext`PhasePlus$67133$$ = 
+    0, $CellContext`alpha$67134$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`alpha$$ = 0, $CellContext`PhasePlus$$ = 
+        0, $CellContext`t$$ = 0}, "ControllerVariables" :> {
+        Hold[$CellContext`t$$, $CellContext`t$67132$$, 0], 
+        Hold[$CellContext`PhasePlus$$, $CellContext`PhasePlus$67133$$, 0], 
+        Hold[$CellContext`alpha$$, $CellContext`alpha$67134$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      Plot[($CellContext`AmplitudePlus 
+          Cos[((2 Pi) $CellContext`freq) $CellContext`t$$ - (
+             2 (Pi/$CellContext`lambda)) $CellContext`z + \
+$CellContext`PhasePlus$$]) 
+         Exp[(-$CellContext`alpha$$) $CellContext`z] + \
+($CellContext`AmplitudeMinus 
+          Cos[((2 Pi) $CellContext`freq) $CellContext`t$$ + (
+              2 (Pi/$CellContext`lambda)) $CellContext`z + \
+$CellContext`PhaseMinus]) 
+         Exp[$CellContext`alpha$$ ($CellContext`z - \
+$CellContext`TLineLength)], {$CellContext`z, 0, $CellContext`TLineLength}, 
+        PlotRange -> 2 $CellContext`AmplitudePlus, AxesLabel -> {
+          $CellContext`z[$CellContext`m], 
+          SuperPlus[$CellContext`V]}], 
+      "Specifications" :> {{$CellContext`t$$, 0, 
+         Rational[1, 10000000], AnimationRunning -> False, 
+         AppearanceElements -> {
+          "ProgressSlider", "PlayPauseButton", "FasterSlowerButtons", 
+           "DirectionButton"}}, {$CellContext`PhasePlus$$, 0, 2 Pi, 
+         AnimationRunning -> False, 
+         AppearanceElements -> {
+          "ProgressSlider", "PlayPauseButton", "FasterSlowerButtons", 
+           "DirectionButton"}}, {$CellContext`alpha$$, 0, 
+         Rational[1, 6], AnimationRunning -> False, 
+         AppearanceElements -> {
+          "ProgressSlider", "PlayPauseButton", "FasterSlowerButtons", 
+           "DirectionButton"}}}, 
+      "Options" :> {
+       ControlType -> Animator, AppearanceElements -> None, DefaultBaseStyle -> 
+        "Animate", DefaultLabelStyle -> "AnimateLabel", SynchronousUpdating -> 
+        True, ShrinkingDelay -> 10.}, "DefaultOptions" :> {}],
+     ImageSizeCache->{505., {219., 226.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Animate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellGroupingRules->{GroupTogetherGrouping, 10002.},
+ CellChangeTimes->{{3.5692083637299023`*^9, 3.569208379239203*^9}, 
+   3.5692084422391376`*^9}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Failed", " ", "attempts"}]], "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ CellChangeTimes->{{3.569207141475995*^9, 3.569207144132153*^9}, {
+  3.56920719652588*^9, 3.5692072125044518`*^9}, {3.569207948097116*^9, 
+  3.5692079494150476`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"DynamicModule", "[", 
+  RowBox[{
+   RowBox[{"{", "alpha", "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"Slider", "[", 
+      RowBox[{
+       RowBox[{"Dynamic", "[", "alpha", "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", 
+         RowBox[{"1", "/", 
+          RowBox[{"(", 
+           RowBox[{"2", "*", "lambda"}], ")"}]}]}], "}"}]}], "]"}], ",", 
+     RowBox[{"Dynamic", "[", "alpha", "]"}]}], "}"}]}], "]"}]], "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ CellChangeTimes->{{3.569205783009173*^9, 3.569205868665365*^9}, {
+   3.569205983839019*^9, 3.5692060398683767`*^9}, 3.569207196525958*^9}],
+
+Cell[BoxData[
+ DynamicModuleBox[{$CellContext`alpha$$ = 0.}, 
+  RowBox[{"{", 
+   RowBox[{
+    SliderBox[Dynamic[
+      BoxForm`RemapVariable[$CellContext`alpha$$, {0, 
+        Rational[1, 6]}], BoxForm`RemapValue[#, $CellContext`alpha$$, {0, 
+        Rational[1, 6]}]& ], {0, 1}], ",", 
+    DynamicBox[ToBoxes[$CellContext`alpha$$, StandardForm],
+     ImageSizeCache->{20., {1., 11.}}]}], "}"}],
+  DynamicModuleValues:>{}]], "Output",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ CellChangeTimes->{
+  3.569205869928361*^9, 3.569205990420274*^9, {3.569206023502824*^9, 
+   3.569206040942679*^9}, 3.569207196526044*^9}],
+
+Cell[BoxData[
+ RowBox[{"Animate", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"Plot", "[", 
+      RowBox[{
+       RowBox[{"AmplitudePlus", "*", 
+        RowBox[{"Cos", "[", 
+         RowBox[{
+          RowBox[{"2", "*", "Pi", "*", "freq", " ", "*", "t"}], "-", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"2", "*", 
+             RowBox[{"Pi", "/", "lambda"}]}], ")"}], "*", "z"}], "+", 
+          "PhasePlus"}], "]"}], "*", 
+        RowBox[{"Exp", "[", 
+         RowBox[{
+          RowBox[{"-", "alpha"}], "*", "z"}], "]"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"z", ",", "0", ",", "TLineLength"}], "}"}], ",", 
+       RowBox[{"PlotRange", "\[Rule]", "AmplitudePlus"}], ",", " ", 
+       RowBox[{"AxesLabel", " ", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"z", " ", "[", "m", "]"}], ",", 
+          SuperscriptBox["V", "+"]}], "}"}]}]}], "]"}], ",", "t", ",", 
+     "PhasePlus", ",", "alpha"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "0", ",", 
+     RowBox[{"10", "/", "freq"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"PhasePlus", ",", "0", ",", 
+     RowBox[{"2", "*", "Pi"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"alpha", ",", "0", ",", 
+     RowBox[{"1", "/", 
+      RowBox[{"(", 
+       RowBox[{"2", "*", "lambda"}], ")"}]}]}], "}"}], ",", 
+   RowBox[{"AnimationRunning", "\[Rule]", "False"}]}], "]"}]], "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ CellChangeTimes->{{3.569206245008417*^9, 3.5692062763003197`*^9}, 
+   3.569207196526112*^9}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`alpha$$ = 0., $CellContext`PhasePlus$$ = 
+    0, $CellContext`t$$ = 7.916119575500488*^-8, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`t$$], 0, 
+      Rational[1, 10000000]}, {
+      Hold[$CellContext`PhasePlus$$], 0, 2 Pi}, {
+      Hold[$CellContext`alpha$$], 0, 
+      Rational[1, 6]}}, Typeset`size$$ = {442., {66., 74.}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`t$23114$$ = 0, $CellContext`PhasePlus$23115$$ = 
+    0, $CellContext`alpha$23116$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`alpha$$ = 0, $CellContext`PhasePlus$$ = 
+        0, $CellContext`t$$ = 0}, "ControllerVariables" :> {
+        Hold[$CellContext`t$$, $CellContext`t$23114$$, 0], 
+        Hold[$CellContext`PhasePlus$$, $CellContext`PhasePlus$23115$$, 0], 
+        Hold[$CellContext`alpha$$, $CellContext`alpha$23116$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> {
+        Plot[($CellContext`AmplitudePlus 
+          Cos[((2 Pi) $CellContext`freq) $CellContext`t$$ - (
+             2 (Pi/$CellContext`lambda)) $CellContext`z + \
+$CellContext`PhasePlus$$]) 
+         Exp[(-$CellContext`alpha$$) $CellContext`z], {$CellContext`z, 
+          0, $CellContext`TLineLength}, 
+         PlotRange -> $CellContext`AmplitudePlus, AxesLabel -> {
+           $CellContext`z[$CellContext`m], 
+           
+           SuperPlus[$CellContext`V]}], $CellContext`t$$, \
+$CellContext`PhasePlus$$, $CellContext`alpha$$}, 
+      "Specifications" :> {{$CellContext`t$$, 0, 
+         Rational[1, 10000000], AnimationRunning -> False, 
+         AppearanceElements -> {
+          "ProgressSlider", "PlayPauseButton", "FasterSlowerButtons", 
+           "DirectionButton"}}, {$CellContext`PhasePlus$$, 0, 2 Pi, 
+         AnimationRunning -> False, 
+         AppearanceElements -> {
+          "ProgressSlider", "PlayPauseButton", "FasterSlowerButtons", 
+           "DirectionButton"}}, {$CellContext`alpha$$, 0, 
+         Rational[1, 6], AnimationRunning -> False, 
+         AppearanceElements -> {
+          "ProgressSlider", "PlayPauseButton", "FasterSlowerButtons", 
+           "DirectionButton"}}}, 
+      "Options" :> {
+       ControlType -> Animator, AppearanceElements -> None, DefaultBaseStyle -> 
+        "Animate", DefaultLabelStyle -> "AnimateLabel", SynchronousUpdating -> 
+        True, ShrinkingDelay -> 10.}, "DefaultOptions" :> {}],
+     ImageSizeCache->{497., {148., 155.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Animate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ CellChangeTimes->{
+  3.569206114179535*^9, {3.569206254919387*^9, 3.569206277117906*^9}, 
+   3.569207196526182*^9}],
+
+Cell[BoxData[
+ RowBox[{"Animate", "[", 
+  RowBox[{
+   RowBox[{"Plot", "[", 
+    RowBox[{
+     RowBox[{"AmplitudePlus", "*", 
+      RowBox[{"Cos", "[", 
+       RowBox[{
+        RowBox[{"2", "*", "Pi", "*", "freq", " ", "*", "t"}], "-", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"2", "*", 
+           RowBox[{"Pi", "/", "lambda"}]}], ")"}], "*", "z"}], "+", 
+        "PhasePlus"}], "]"}], "*", 
+      RowBox[{"Exp", "[", 
+       RowBox[{
+        RowBox[{"-", "alpha"}], "*", "z"}], "]"}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"z", ",", "0", ",", "TLineLength"}], "}"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", "AmplitudePlus"}], ",", " ", 
+     RowBox[{"AxesLabel", " ", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"z", " ", "[", "m", "]"}], ",", 
+        SuperscriptBox["V", "+"]}], "}"}]}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "0", ",", 
+     RowBox[{"10", "/", "freq"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"PhasePlus", ",", "0", ",", 
+     RowBox[{"2", "*", "Pi"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"alpha", ",", "0", ",", 
+     RowBox[{"1", "/", 
+      RowBox[{"(", 
+       RowBox[{"2", "*", "lambda"}], ")"}]}]}], "}"}], ",", 
+   RowBox[{"AnimationRunning", "\[Rule]", "False"}]}], "]"}]], "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ CellChangeTimes->{{3.569206683368186*^9, 3.5692066931700706`*^9}, {
+   3.5692068586110783`*^9, 3.569206859025371*^9}, 3.56920719652625*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Animate", "::", "vsform"}], "MessageName"], ":", 
+  " ", "\<\"Animate argument \[NoBreak]\\!\\({PhasePlus, 0, \\(\\(2\\\\ \[Pi]\
+\\)\\), \\(\\(ValueThumbSlider[##1]\\)\\)}\\)\[NoBreak] does not have the \
+correct form for a variable specification. \\!\\(\\*ButtonBox[\\\"\
+\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/Animate\\\", ButtonNote -> \
+\\\"Animate::vsform\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ CellChangeTimes->{3.56920669514423*^9, 3.56920719652633*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Animate", "::", "vsform"}], "MessageName"], ":", 
+  " ", "\<\"Animate argument \[NoBreak]\\!\\({PhasePlus, 0, \\(\\(2\\\\ \[Pi]\
+\\)\\), \\(\\(ValueThumbSlider[##1]\\)\\)}\\)\[NoBreak] does not have the \
+correct form for a variable specification. \\!\\(\\*ButtonBox[\\\"\
+\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/Animate\\\", ButtonNote -> \
+\\\"Animate::vsform\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ CellChangeTimes->{3.5692066951461887`*^9, 3.569207196526402*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Animate", "::", "vsform"}], "MessageName"], ":", 
+  " ", "\<\"Animate argument \[NoBreak]\\!\\({PhasePlus, 0, \\(\\(2\\\\ \[Pi]\
+\\)\\), \\(\\(ValueThumbSlider[##1]\\)\\)}\\)\[NoBreak] does not have the \
+correct form for a variable specification. \\!\\(\\*ButtonBox[\\\"\
+\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/Animate\\\", ButtonNote -> \
+\\\"Animate::vsform\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ CellChangeTimes->{3.5692066951472597`*^9, 3.569207196526471*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], ":", 
+  " ", "\<\"Further output of \[NoBreak]\\!\\(\\*StyleBox[\\(Animate :: \
+vsform\\), \\\"MessageName\\\"]\\)\[NoBreak] will be suppressed during this \
+calculation. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/stop\\\", ButtonNote -> \
+\\\"General::stop\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ CellChangeTimes->{3.569206695171296*^9, 3.5692071965265408`*^9}],
+
+Cell[BoxData[
+ RowBox[{"Animate", "[", 
+  RowBox[{
+   RowBox[{"Plot", "[", 
+    RowBox[{
+     RowBox[{"AmplitudePlus", " ", 
+      RowBox[{"Cos", "[", 
+       RowBox[{
+        RowBox[{"2", " ", "\[Pi]", " ", "freq", " ", "t"}], "-", 
+        FractionBox[
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"2", " ", "\[Pi]"}], ")"}], " ", "z"}], "lambda"], "+", 
+        "PhasePlus"}], "]"}], " ", 
+      RowBox[{"Exp", "[", 
+       RowBox[{
+        RowBox[{"-", "alpha"}], " ", "z"}], "]"}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"z", ",", "0", ",", "TLineLength"}], "}"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", "AmplitudePlus"}], ",", 
+     RowBox[{"AxesLabel", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"z", "[", "m", "]"}], ",", 
+        SuperscriptBox["V", "+"]}], "}"}]}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "0", ",", 
+     FractionBox["10", "freq"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"PhasePlus", ",", "0", ",", 
+     RowBox[{"2", " ", "\[Pi]"}], ",", 
+     RowBox[{"ValueThumbSlider", "[", "##1", "]"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"alpha", ",", "0", ",", 
+     FractionBox["1", 
+      RowBox[{"2", " ", "lambda"}]]}], "}"}], ",", 
+   RowBox[{"AnimationRunning", "\[Rule]", "False"}]}], "]"}]], "Output",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ CellChangeTimes->{3.569206308139744*^9, 3.569206695173942*^9, 
+  3.569207196526614*^9}]
+}, Closed]]
+},
+WindowSize->{1440, 856},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+PrivateNotebookOptions->{"VersionedStylesheet"->{"Default.nb"[8.] -> False}},
+Magnification->1.25,
+FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (December 4, \
+2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 363, 8, 55, "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.}],
+Cell[945, 32, 1868, 34, 225, "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.}],
+Cell[2816, 68, 825, 12, 35, "Output",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.}],
+Cell[3644, 82, 817, 12, 35, "Output",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.}],
+Cell[4464, 96, 817, 12, 35, "Output",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.}],
+Cell[5284, 110, 817, 12, 35, "Output",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.}],
+Cell[6104, 124, 817, 12, 35, "Output",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.}],
+Cell[6924, 138, 817, 12, 35, "Output",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.}],
+Cell[7744, 152, 819, 12, 35, "Output",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.}],
+Cell[8566, 166, 817, 12, 35, "Output",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.}],
+Cell[9386, 180, 819, 12, 35, "Output",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.}]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10242, 197, 380, 9, 55, "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10001.}],
+Cell[10625, 208, 2210, 51, 78, "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10001.}],
+Cell[12838, 261, 3276, 61, 519, "Output",
+ CellGroupingRules->{GroupTogetherGrouping, 10001.}]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16151, 327, 356, 8, 55, "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.}],
+Cell[16510, 337, 1642, 41, 57, "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.}],
+Cell[18155, 380, 2857, 56, 519, "Output",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.}]
+}, Open  ]],
+Cell[21027, 439, 524, 10, 29, "Message"],
+Cell[21554, 451, 371, 8, 28, "Message"],
+Cell[21928, 461, 535, 11, 29, "Message"],
+Cell[22466, 474, 369, 8, 28, "Message"],
+Cell[22838, 484, 537, 11, 29, "Message"],
+Cell[CellGroupData[{
+Cell[23400, 499, 275, 7, 55, "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10001.}],
+Cell[23678, 508, 3428, 83, 141, "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10001.}]
+}, Open  ]],
+Cell[27121, 594, 3288, 65, 881, "Output"],
+Cell[30412, 661, 522, 10, 29, "Message"],
+Cell[30937, 673, 522, 10, 29, "Message"],
+Cell[31462, 685, 371, 8, 28, "Message"],
+Cell[31836, 695, 535, 11, 29, "Message"],
+Cell[32374, 708, 369, 8, 28, "Message"],
+Cell[32746, 718, 537, 11, 29, "Message"],
+Cell[33286, 731, 369, 8, 28, "Message"],
+Cell[33658, 741, 530, 11, 29, "Message"],
+Cell[34191, 754, 537, 11, 29, "Message"],
+Cell[34731, 767, 527, 11, 29, "Message"],
+Cell[35261, 780, 2593, 66, 99, "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10001.}],
+Cell[CellGroupData[{
+Cell[37879, 850, 2914, 59, 553, "Input"],
+Cell[40796, 911, 522, 10, 29, "Message"],
+Cell[41321, 923, 377, 9, 28, "Message"],
+Cell[41701, 934, 535, 11, 29, "Message"],
+Cell[42239, 947, 379, 9, 28, "Message"],
+Cell[42621, 958, 535, 11, 29, "Message"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[43193, 974, 2124, 60, 99, "Input"],
+Cell[45320, 1036, 2919, 59, 519, "Output"],
+Cell[48242, 1097, 556, 10, 50, "Message"],
+Cell[48801, 1109, 377, 9, 28, "Message"],
+Cell[49181, 1120, 571, 12, 50, "Message"],
+Cell[49755, 1134, 377, 9, 28, "Message"],
+Cell[50135, 1145, 569, 12, 50, "Message"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[50741, 1162, 154, 2, 36, "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10002.}],
+Cell[50898, 1166, 1967, 54, 250, "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10002.}],
+Cell[52868, 1222, 3589, 71, 916, "Output",
+ CellGroupingRules->{GroupTogetherGrouping, 10002.}]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[56494, 1298, 281, 5, 28, "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.}],
+Cell[56778, 1305, 661, 17, 63, "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.}],
+Cell[57442, 1324, 626, 14, 96, "Output",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.}],
+Cell[58071, 1340, 1561, 42, 213, "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.}],
+Cell[59635, 1384, 3437, 69, 637, "Output",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.}],
+Cell[63075, 1455, 1477, 39, 176, "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.}],
+Cell[64555, 1496, 616, 11, 97, "Message",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.}],
+Cell[65174, 1509, 620, 11, 97, "Message",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.}],
+Cell[65797, 1522, 620, 11, 97, "Message",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.}],
+Cell[66420, 1535, 596, 11, 53, "Message",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.}],
+Cell[67019, 1548, 1439, 39, 353, "Output",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.}]
+}, Closed]]
+}
+]
+*)
+
+(* End of internal cache information *)

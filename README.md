@@ -24,7 +24,7 @@ BYU ECEn 360 Electromagnetics - Winter 2015
 
 Click [here](http://nbviewer.ipython.org/github/gregnordin/ECEn360_W15/tree/master/notebooks/). Note these are **static** html pages (made with nbviewer.ipython.org) and are not executable.
 
-**Download a Single Non-Notebook File (.pptx, .png, etc)**
+**Download a Single Non-Notebook File (.pptx, .png, etc)**:
 
 1. Navigate to the file in this repository directory structure
 2. Click on the file name

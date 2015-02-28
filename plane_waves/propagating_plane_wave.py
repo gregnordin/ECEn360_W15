@@ -1,6 +1,8 @@
-# -*- coding: utf-8 -*-
 """
-Demonstrate use of GLLinePlotItem to draw parametric curve.
+
+Animation of propagating plane wave electric and magnetic fields.
+Feb. 27, 2015
+G. Nordin
 
 """
 
@@ -14,7 +16,7 @@ w = gl.GLViewWidget()
 #w.opts['distance'] = 3
 w.resize(800,600)
 w.show()
-w.setWindowTitle('pyqtgraph example: GLLinePlotItem')
+w.setWindowTitle('Propagating plane wave')
 
 g = gl.GLGridItem()
 w.addItem(g)
@@ -22,25 +24,18 @@ w.addItem(g)
 ax = gl.GLAxisItem()
 ax.setSize(1.5,4,1.5)
 w.addItem(ax)
-
-# Define a function generating the helix coordinates
-def helix(t):
-    x = np.cos(2*np.pi*t)
-    y = np.sin(2*np.pi*t)
-    z = t
-    return x, y, z
   
-def helix2(t,z):
+def efield(t,z):
     x = np.cos(2*np.pi*(t-z))
-    y = np.sin(2*np.pi*(t-z))
+    y = np.zeros(len(z))
     z = z
     return x, y, z
   
 # Make a linear space from 0 to 4pi (i.e. 2 revolutions), get coords
-z = np.linspace(0, 4, 200)
-x, y, z = helix2(0.0,z)
+z = np.linspace(0, 8, 200)
+x, y, z = efield(0.0,z)
 
-pts = np.vstack([-x,z,y]).transpose()
+pts = np.vstack([y,z,x]).transpose()
 #plt = gl.GLLinePlotItem(pos=pts, color=pg.mkColor(0,0,255), width=2., antialias=True)
 plt = gl.GLLinePlotItem(pos=pts, width=1., antialias=True)
 w.addItem(plt)
@@ -53,8 +48,8 @@ def update():
     global z, velocity, plt, counter
     counter +=1
     time = float(counter)/frametime % 1
-    x, y, z = helix2(time,z)
-    pts = np.vstack([-x,z,y]).transpose()
+    x, y, z = efield(time,z)
+    pts = np.vstack([y,z,x]).transpose()
     plt.setData(pos=pts)
     
 timer = QtCore.QTimer()

@@ -26,14 +26,15 @@ ax = gl.GLAxisItem()
 ax.setSize(1.5,4,1.5)
 w.addItem(ax)
   
-def efield(t,z):
-    x = np.cos(2*np.pi*(t-z))
+def efield(t,z,amplitude):
+    x = amplitude * np.cos(2*np.pi*(t-z))
     y = np.zeros(len(z))
     z = z
     return x, y, z
 
+amplitude = 2.0
 z = np.linspace(-10, 10, 500)
-x, y, z = efield(0.0,z)
+x, y, z = efield(0.0,z,amplitude)
 pts_e = np.vstack([y,z,x]).transpose()
 pts_h = np.vstack([x,z,y]).transpose()
 
@@ -54,7 +55,7 @@ pts_zaxis = np.vstack([x_zaxis,zaxis,y_zaxis]).transpose()
 plt_zaxis = gl.GLLinePlotItem(pos=pts_zaxis, width=linewidth, antialias=True)
 w.addItem(plt_zaxis)
 ## make y-axis
-yaxis = np.linspace(-10,10,10)
+yaxis = np.linspace(-5,5,10)
 x_yaxis = np.zeros(10)
 z_yaxis = np.zeros(10)
 pts_yaxis = np.vstack([yaxis,z_yaxis,x_yaxis]).transpose()
@@ -68,7 +69,7 @@ pts_xaxis = np.vstack([y_xaxis,z_xaxis,xaxis]).transpose()
 plt_xaxis = gl.GLLinePlotItem(pos=pts_xaxis, width=linewidth, antialias=True)
 w.addItem(plt_xaxis)
 
-## make images
+'''## make images
 image_shape = (6,6)
 uniform_values = np.ones(image_shape) * 255
 uniform_image_transparent = pg.makeARGB(uniform_values)[0]
@@ -76,17 +77,17 @@ uniform_image_transparent[:,:,3] = 230
 v1 = gl.GLImageItem(uniform_image_transparent)
 v1.translate(-image_shape[0]/2, -image_shape[1]/2, 0)
 v1.rotate(90, 1,0,0)
-w.addItem(v1)
+w.addItem(v1)'''
 
 frametime = 50 # frame refresh time in ms
 velocity = 1./frametime
 counter = 0
 
 def update():
-    global z, velocity, plt_e, plt_h, counter
+    global z, velocity, plt_e, plt_h, counter, amplitude
     counter +=1
     time = float(counter)/frametime % 1
-    x, y, z = efield(time,z)
+    x, y, z = efield(time,z,amplitude)
     pts_e = np.vstack([y,z,x]).transpose()
     plt_e.setData(pos=pts_e)
     pts_h = np.vstack([x,z,y]).transpose()

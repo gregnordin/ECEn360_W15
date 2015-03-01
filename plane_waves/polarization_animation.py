@@ -34,8 +34,8 @@ def preptomakelines(pts):
         pts2[2*i + 1,:] = pts[i,:]
     return pts2
 
-psi_deg = 45.0
-delta_deg = 90.0
+psi_deg = 30.0
+delta_deg = -30.0
 # Calculate sinusoidal electric field for arbitrary polarization
 def efield_arbpol(t,z,amplitude,psi_rad,delta_rad):
     x = amplitude * np.cos(psi_rad) * np.cos(2*np.pi*(t-z))
@@ -107,15 +107,15 @@ pts_xaxis = np.vstack([y_xaxis,z_xaxis,xaxis]).transpose()
 plt_xaxis = gl.GLLinePlotItem(pos=pts_xaxis, color=axis_color, width=linewidth, antialias=True)
 w.addItem(plt_xaxis)
 
-'''## make images
-image_shape = (6,6)
+## make images
+image_shape = (2,2)
 uniform_values = np.ones(image_shape) * 255
 uniform_image_transparent = pg.makeARGB(uniform_values)[0]
-uniform_image_transparent[:,:,3] = 230
+uniform_image_transparent[:,:,3] = 160
 v1 = gl.GLImageItem(uniform_image_transparent)
-v1.translate(-image_shape[0]/2, -image_shape[1]/2, 0)
+v1.translate(-image_shape[0]/2., -image_shape[1]/2., 0)
 v1.rotate(90, 1,0,0)
-w.addItem(v1)'''
+w.addItem(v1)
 
 # Set up some animation parameters
 frametime = 50 # frame refresh time in ms

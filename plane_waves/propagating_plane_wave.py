@@ -25,27 +25,38 @@ w.addItem(g)
 ax = gl.GLAxisItem()
 ax.setSize(1.5,4,1.5)
 w.addItem(ax)
-  
+
+# Function to create new array from old where new array is formatted to prepare to
+# draw lines perpendicular from z-axis to curve defined by input array
+def preptomakelines(pts):
+    pts2 = np.zeros(shape=(2*pts.shape[0], pts.shape[1]))
+    for i in range(pts.shape[0]):
+        pts2[2*i,2] = pts[i,2]
+        pts2[2*i + 1,:] = pts[i,:]
+    return pts2
+
 def efield(t,z,amplitude):
     x = amplitude * np.cos(2*np.pi*(t-z))
     y = np.zeros(len(z))
     z = z
     return x, y, z
 
-amplitude = 2.0
+amplitude = 1.0
 z = np.linspace(-10, 10, 500)
 x, y, z = efield(0.0,z,amplitude)
-pts_e = np.vstack([y,z,x]).transpose()
-pts_h = np.vstack([x,z,y]).transpose()
+#pts_e = np.vstack([y,z,x]).transpose()
+#pts_h = np.vstack([x,z,y]).transpose()
+pts_e = np.vstack([x,y,z]).transpose()
+pts_e_lines = preptomakelines(pts_e)
 
 efield_color = (255, 0, 0, 255)
 hfield_color = (0, 0, 255, 255)
 linewidth = 2.0
 
-plt_e = gl.GLLinePlotItem(pos=pts_e, color=efield_color, width=linewidth, antialias=True)
+plt_e = gl.GLLinePlotItem(pos=pts_e_lines, mode='lines', color=efield_color, width=linewidth, antialias=True)
 w.addItem(plt_e)
-plt_h = gl.GLLinePlotItem(pos=pts_h, color=hfield_color, width=linewidth, antialias=True)
-w.addItem(plt_h)
+#plt_h = gl.GLLinePlotItem(pos=pts_h, color=hfield_color, width=linewidth, antialias=True)
+#w.addItem(plt_h)
 
 ## make z-axis
 zaxis = np.linspace(-10,10,10)
@@ -84,14 +95,16 @@ velocity = 1./frametime
 counter = 0
 
 def update():
-    global z, velocity, plt_e, plt_h, counter, amplitude
+    global z, velocity, plt_e, counter, amplitude #, plt_h
     counter +=1
     time = float(counter)/frametime % 1
     x, y, z = efield(time,z,amplitude)
-    pts_e = np.vstack([y,z,x]).transpose()
-    plt_e.setData(pos=pts_e)
-    pts_h = np.vstack([x,z,y]).transpose()
-    plt_h.setData(pos=pts_h)
+    #pts_e = np.vstack([y,z,x]).transpose()
+    pts_e = np.vstack([x,y,z]).transpose()
+    pts_e_lines = preptomakelines(pts_e)
+    plt_e.setData(pos=pts_e_lines)
+    #pts_h = np.vstack([x,z,y]).transpose()
+    #plt_h.setData(pos=pts_h)
     
 timer = QtCore.QTimer()
 timer.timeout.connect(update)

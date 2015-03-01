@@ -22,6 +22,8 @@ g = gl.GLGridItem()
 #g.rotate(90,1,0,0)
 w.addItem(g)
 
+degtorad = np.pi/180.0
+
 # Function to create new array from old where new array is formatted to prepare to
 # draw lines perpendicular from z-axis to curve defined by input array
 def preptomakelines(pts):
@@ -38,29 +40,34 @@ def efield(t,z,amplitude):
     z = z
     return x, y, z
 
+psi_deg = 0.0
+delta_deg = 0.0
+# Calculate sinusoidal electric field for arbitrary polarization
+def efield_arbpol(t,z,amplitude,psi_rad,delta_rad):
+    x = amplitude * np.cos(psi_rad) * np.cos(2*np.pi*(t-z))
+    y = amplitude * np.sin(psi_rad) * np.cos(2*np.pi*(t-z) + delta_rad)
+    z = z
+    return x, y, z
+
 # Prep coordinate rotations for electric & magnetic fields to go from calculation
 # coordinates to pyqtgraph plotting coordinates
 temp2Darray = [[0, 0, 1],
                [1, 0, 0],
                [0, 1, 0]]
 rot_efield_coord = np.array(temp2Darray)
-temp2Darray = [[1, 0, 0],
-               [0, 0, 1],
-               [0, 1, 0]]
-rot_hfield_coord = np.array(temp2Darray)
 
 # Calculate electric & magnetic field arrays. Also make arrays to define lines.
 amplitude = 1.0
 z = np.linspace(-10, 10, 500)
-x, y, z = efield(0.0,z,amplitude)
+x, y, z = efield_arbpol(0.0,z,amplitude,psi_deg*degtorad,delta_deg*degtorad)
 pts_e = np.vstack([x,y,z]).transpose()
 pts_e_lines = preptomakelines(pts_e)
-pts_h = pts_e
-pts_h_lines = preptomakelines(pts_h)
 pts_e = np.dot(pts_e, rot_efield_coord)
 pts_e_lines = np.dot(pts_e_lines, rot_efield_coord)
-pts_h = np.dot(pts_h, rot_hfield_coord)
-pts_h_lines = np.dot(pts_h_lines, rot_hfield_coord)
+pts_h = np.vstack([-y,x,z]).transpose()
+pts_h_lines = preptomakelines(pts_h)
+pts_h = np.dot(pts_h, rot_efield_coord)
+pts_h_lines = np.dot(pts_h_lines, rot_efield_coord)
 
 # Get ready to make plots
 efield_color = (255, 0, 0, 255)
@@ -122,20 +129,21 @@ counter = 0
 def update():
     global z, velocity, counter, amplitude
     global plt_e, plt_e_lines, rot_efield_coord
-    global plt_h, plt_h_lines, rot_hfield_coord
+    global plt_h, plt_h_lines
+    global psi_deg, delta_deg, degtorad
     counter +=1
     time = float(counter)/frametime % 1
-    x, y, z = efield(time,z,amplitude)
+    x, y, z = efield_arbpol(time,z,amplitude,psi_deg*degtorad,delta_deg*degtorad)
     pts_e = np.vstack([x,y,z]).transpose()
-    pts_h = pts_e
     pts_e_lines = preptomakelines(pts_e)
     pts_e = np.dot(pts_e, rot_efield_coord)
     pts_e_lines = np.dot(pts_e_lines, rot_efield_coord)
     plt_e.setData(pos=pts_e)
     plt_e_lines.setData(pos=pts_e_lines)
+    pts_h = np.vstack([-y,x,z]).transpose()
     pts_h_lines = preptomakelines(pts_h)
-    pts_h = np.dot(pts_h, rot_hfield_coord)
-    pts_h_lines = np.dot(pts_h_lines, rot_hfield_coord)
+    pts_h = np.dot(pts_h, rot_efield_coord)
+    pts_h_lines = np.dot(pts_h_lines, rot_efield_coord)
     plt_h.setData(pos=pts_h)
     plt_h_lines.setData(pos=pts_h_lines)
     

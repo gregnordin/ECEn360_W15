@@ -41,6 +41,17 @@ def efield(t,z,amplitude):
     z = z
     return x, y, z
 
+# Prep coordinate rotations for electric & magnetic fields to go from calculation
+# coordinates to pyqtgraph plotting coordinates
+temp2Darray = [[0, 0, 1],
+               [1, 0, 0],
+               [0, 1, 0]]
+rot_efield_coord = np.array(temp2Darray)
+temp2Darray = [[1, 0, 0],
+               [0, 0, 1],
+               [0, 1, 0]]
+rot_hfield_coord = np.array(temp2Darray)
+
 amplitude = 1.0
 z = np.linspace(-10, 10, 500)
 x, y, z = efield(0.0,z,amplitude)
@@ -48,13 +59,17 @@ x, y, z = efield(0.0,z,amplitude)
 #pts_h = np.vstack([x,z,y]).transpose()
 pts_e = np.vstack([x,y,z]).transpose()
 pts_e_lines = preptomakelines(pts_e)
+pts_e = np.dot(pts_e, rot_efield_coord)
+pts_e_lines = np.dot(pts_e_lines, rot_efield_coord)
 
 efield_color = (255, 0, 0, 255)
 hfield_color = (0, 0, 255, 255)
 linewidth = 2.0
 
-plt_e = gl.GLLinePlotItem(pos=pts_e_lines, mode='lines', color=efield_color, width=linewidth, antialias=True)
+plt_e = gl.GLLinePlotItem(pos=pts_e, mode='line_strip', color=efield_color, width=linewidth, antialias=True)
 w.addItem(plt_e)
+plt_e_lines = gl.GLLinePlotItem(pos=pts_e_lines, mode='lines', color=efield_color, width=linewidth, antialias=True)
+w.addItem(plt_e_lines)
 #plt_h = gl.GLLinePlotItem(pos=pts_h, color=hfield_color, width=linewidth, antialias=True)
 #w.addItem(plt_h)
 
@@ -95,14 +110,19 @@ velocity = 1./frametime
 counter = 0
 
 def update():
-    global z, velocity, plt_e, counter, amplitude #, plt_h
+    global z, velocity, counter, amplitude #, plt_h
+    global plt_e, plt_e_lines
+    global rot_efield_coord, rot_hfield_coord
     counter +=1
     time = float(counter)/frametime % 1
     x, y, z = efield(time,z,amplitude)
     #pts_e = np.vstack([y,z,x]).transpose()
     pts_e = np.vstack([x,y,z]).transpose()
     pts_e_lines = preptomakelines(pts_e)
-    plt_e.setData(pos=pts_e_lines)
+    pts_e = np.dot(pts_e, rot_efield_coord)
+    pts_e_lines = np.dot(pts_e_lines, rot_efield_coord)
+    plt_e.setData(pos=pts_e)
+    plt_e_lines.setData(pos=pts_e_lines)
     #pts_h = np.vstack([x,z,y]).transpose()
     #plt_h.setData(pos=pts_h)
     

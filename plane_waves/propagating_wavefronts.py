@@ -1,7 +1,7 @@
 """
 
-Animation of propagating plane wave electric and magnetic fields.
-Feb. 27, 2015
+Animation of propagating plane wave wavefronts.
+March 2, 2015
 G. Nordin
 
 """
@@ -13,7 +13,7 @@ import numpy as np
 
 app = QtGui.QApplication([])
 w = gl.GLViewWidget()
-w.opts['distance'] = 8
+w.opts['distance'] = 20
 w.resize(800,600)
 w.show()
 w.setWindowTitle('Propagating plane wave')
@@ -56,33 +56,7 @@ temp2Darray = [[0, 0, 1],
                [0, 1, 0]]
 rot_efield_coord = np.array(temp2Darray)
 
-# Calculate electric & magnetic field arrays. Also make arrays to define lines.
-amplitude = 1.0
-z = np.linspace(-10, 10, 500)
-x, y, z = efield_arbpol(0.0,z,amplitude,psi_deg*degtorad,delta_deg*degtorad)
-pts_e = np.vstack([x,y,z]).transpose()
-pts_e_lines = preptomakelines(pts_e)
-pts_e = np.dot(pts_e, rot_efield_coord)
-pts_e_lines = np.dot(pts_e_lines, rot_efield_coord)
-pts_h = np.vstack([-y,x,z]).transpose()
-pts_h_lines = preptomakelines(pts_h)
-pts_h = np.dot(pts_h, rot_efield_coord)
-pts_h_lines = np.dot(pts_h_lines, rot_efield_coord)
-
-# Get ready to make plots
-efield_color = (255, 0, 0, 255)
-hfield_color = (0, 0, 255, 255)
 linewidth = 2.0
-
-# Make plots
-plt_e = gl.GLLinePlotItem(pos=pts_e, mode='line_strip', color=efield_color, width=linewidth, antialias=True)
-w.addItem(plt_e)
-plt_e_lines = gl.GLLinePlotItem(pos=pts_e_lines, mode='lines', color=efield_color, width=linewidth, antialias=True)
-w.addItem(plt_e_lines)
-plt_h = gl.GLLinePlotItem(pos=pts_h, mode='line_strip', color=hfield_color, width=linewidth, antialias=True)
-w.addItem(plt_h)
-plt_h_lines = gl.GLLinePlotItem(pos=pts_h_lines, mode='lines', color=hfield_color, width=linewidth, antialias=True)
-w.addItem(plt_h_lines)
 
 # Add lines to visually define axes
 x_length = 1.1
@@ -111,41 +85,44 @@ plt_xaxis = gl.GLLinePlotItem(pos=pts_xaxis, width=linewidth, antialias=True)
 w.addItem(plt_xaxis)
 
 ## make images
-image_shape = (6,6)
+image_shape = (8,8)
 uniform_values = np.ones(image_shape) * 255
 uniform_image_transparent = pg.makeARGB(uniform_values)[0]
-uniform_image_transparent[:,:,3] = 230
+uniform_image_transparent[:,:,3] = 95
 v1 = gl.GLImageItem(uniform_image_transparent)
 v1.translate(-image_shape[0]/2, -image_shape[1]/2, 0)
 v1.rotate(90, 1,0,0)
-w.addItem(v1)
+#w.addItem(v1)
+v = []
+for i in range(0,20):
+    vtemp = gl.GLImageItem(uniform_image_transparent)
+    vtemp.translate(-image_shape[0]/2, -image_shape[1]/2, 0)
+    vtemp.rotate(90, 1,0,0)
+    dz = float(i - 10)
+    vtemp.translate(0, dz, 0)
+    v.append(vtemp)
+    w.addItem(v[i])
 
 # Set up some animation parameters
 frametime = 50 # frame refresh time in ms
-velocity = 1./frametime
+inv_frametime = 1./frametime
 counter = 0
 
 # Function to update scene for each frame
 def update():
-    global z, velocity, counter, amplitude
-    global plt_e, plt_e_lines, rot_efield_coord
-    global plt_h, plt_h_lines
-    global psi_deg, delta_deg, degtorad
+    global inv_frametime, counter, amplitude
     counter +=1
     time = float(counter)/frametime % 1
-    x, y, z = efield_arbpol(time,z,amplitude,psi_deg*degtorad,delta_deg*degtorad)
-    pts_e = np.vstack([x,y,z]).transpose()
-    pts_e_lines = preptomakelines(pts_e)
-    pts_e = np.dot(pts_e, rot_efield_coord)
-    pts_e_lines = np.dot(pts_e_lines, rot_efield_coord)
-    plt_e.setData(pos=pts_e)
-    plt_e_lines.setData(pos=pts_e_lines)
-    pts_h = np.vstack([-y,x,z]).transpose()
-    pts_h_lines = preptomakelines(pts_h)
-    pts_h = np.dot(pts_h, rot_efield_coord)
-    pts_h_lines = np.dot(pts_h_lines, rot_efield_coord)
-    plt_h.setData(pos=pts_h)
-    plt_h_lines.setData(pos=pts_h_lines)
+    if counter != 1:
+        if time != 0:
+            dz = inv_frametime
+        else:
+            dz = -1.0
+    else:
+        dz = inv_frametime
+    #v1.translate(0, dz, 0)
+    for vtemp in v:
+        vtemp.translate(0, dz, 0)
     
 # Set up timer for animation
 timer = QtCore.QTimer()

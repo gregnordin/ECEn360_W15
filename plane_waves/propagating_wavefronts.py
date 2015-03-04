@@ -22,40 +22,6 @@ g = gl.GLGridItem()
 #g.rotate(90,1,0,0)
 w.addItem(g)
 
-degtorad = np.pi/180.0
-
-# Function to create new array from old where new array is formatted to prepare to
-# draw lines perpendicular from z-axis to curve defined by input array
-def preptomakelines(pts):
-    pts2 = np.zeros(shape=(2*pts.shape[0], pts.shape[1]))
-    for i in range(pts.shape[0]):
-        pts2[2*i,2] = pts[i,2]
-        pts2[2*i + 1,:] = pts[i,:]
-    return pts2
-
-# Calculate sinusoidal electric field
-def efield(t,z,amplitude):
-    x = amplitude * np.cos(2*np.pi*(t-z))
-    y = np.zeros(len(z))
-    z = z
-    return x, y, z
-
-psi_deg = 0.0
-delta_deg = 0.0
-# Calculate sinusoidal electric field for arbitrary polarization
-def efield_arbpol(t,z,amplitude,psi_rad,delta_rad):
-    x = amplitude * np.cos(psi_rad) * np.cos(2*np.pi*(t-z))
-    y = amplitude * np.sin(psi_rad) * np.cos(2*np.pi*(t-z) + delta_rad)
-    z = z
-    return x, y, z
-
-# Prep coordinate rotations for electric & magnetic fields to go from calculation
-# coordinates to pyqtgraph plotting coordinates
-temp2Darray = [[0, 0, 1],
-               [1, 0, 0],
-               [0, 1, 0]]
-rot_efield_coord = np.array(temp2Darray)
-
 linewidth = 2.0
 
 # Add lines to visually define axes

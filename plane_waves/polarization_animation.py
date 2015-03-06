@@ -3,6 +3,13 @@ import pyqtgraph as pg
 import pyqtgraph.opengl as gl
 import numpy as np
 import sys
+from MyMeshData import MyMeshData
+
+def vectorlength(vec):
+    sum = 0.0
+    for i in range(vec.shape[0]):
+        sum += vec[i]**2
+    return np.sqrt(sum)
 
 ## Always start by initializing Qt (only once per application)
 app = QtGui.QApplication([])
@@ -120,7 +127,7 @@ pts_e_lines = np.dot(pts_e_lines, rot_efield_coord)
 z0 = np.zeros(len(z))
 pts_e_z0 = np.vstack([x,y,z0]).transpose()
 pts_e_z0 = np.dot(pts_e_z0, rot_efield_coord)
-pts_arrow = np.array( [[0.0, 0.0, 0.0], pts_e_z0[0]] )
+pts_arrow = np.array( [[0.0, 0.0, 0.0], pts_e_z0[len(pts_e_z0)/2.0]] )
 
 # Get ready to make plots
 efield_color = (1, 0, 0, 1)
@@ -136,9 +143,19 @@ wGL.addItem(plt_e)
 #plt_e_lines = gl.GLLinePlotItem(pos=pts_e_lines, mode='lines', color=efield_color, width=linewidth, antialias=True)
 #wGL.addItem(plt_e_lines)
 plt_e_z0 = gl.GLLinePlotItem(pos=pts_e_z0, mode='line_strip', color=efield_color_z0, width=linewidth2Dpol, antialias=True)
-wGL.addItem(plt_e_z0)
-plt_arrow = gl.GLLinePlotItem(pos=pts_arrow, mode='line_strip', color=efield_color_arrow, width=linewidth2Defieldvector, antialias=True)
-wGL.addItem(plt_arrow)
+#wGL.addItem(plt_e_z0)
+## Create arrow
+arrow_length = vectorlength(pts_e_z0[len(pts_e_z0)/2.0])
+arrow_md = MyMeshData.arrow(rows=10, cols=20, radius = 0.05, length=arrow_length)
+psi = np.arctan2(pts_arrow[1][2], pts_arrow[1][1])
+print pts_arrow, arrow_length, psi
+arrow_color = np.zeros((arrow_md.faceCount(), 4), dtype=float)
+arrow_color[:,0] = 1.0
+arrow_color[:,3] = 1.0
+arrow_md.setFaceColors(arrow_color)
+arrow = gl.GLMeshItem(meshdata=arrow_md, smooth=True, drawEdges=True, edgeColor=(1,0,0,1), shader='balloon')
+arrow.rotate(-90., 0, 1, 0)
+wGL.addItem(arrow)
 
 # Add lines to visually define axes
 x_length = 1.1
@@ -200,8 +217,13 @@ def update():
     pts_e_z0 = np.vstack([x,y,z0]).transpose()
     pts_e_z0 = np.dot(pts_e_z0, rot_efield_coord)
     plt_e_z0.setData(pos=pts_e_z0)
-    pts_e_arrow = np.array( [[0.0, 0.0, 0.0], pts_e_z0[len(pts_e_z0)/2.0]] )
-    plt_arrow.setData(pos=pts_e_arrow)
+    pts_arrow = np.array( [[0.0, 0.0, 0.0], pts_e_z0[len(pts_e_z0)/2.0]] )
+    arrow_length = vectorlength(pts_e_z0[len(pts_e_z0)/2.0])
+    arrow_md = MyMeshData.arrow(rows=10, cols=20, radius = 0.05, length=arrow_length)
+    arrow_md.setFaceColors(arrow_color)
+    arrow.setMeshData(arrow_md)
+    psi = np.arctan2(pts_arrow[1][2], pts_arrow[1][1])
+    arrow.rotate(psi, 0, 1, 0)
 
 # Set up timer for animation
 timer = QtCore.QTimer()

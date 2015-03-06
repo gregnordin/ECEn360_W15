@@ -54,7 +54,7 @@ w.addItem(plt_xaxis)
 image_shape = (8,8)
 uniform_values = np.ones(image_shape) * 255
 uniform_image_transparent = pg.makeARGB(uniform_values)[0]
-uniform_image_transparent[:,:,3] = 95
+uniform_image_transparent[:,:,3] = 65
 v1 = gl.GLImageItem(uniform_image_transparent)
 v1.translate(-image_shape[0]/2, -image_shape[1]/2, 0)
 v1.rotate(90, 1,0,0)

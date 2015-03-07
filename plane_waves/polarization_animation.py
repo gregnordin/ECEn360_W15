@@ -126,7 +126,7 @@ pts_arrow = np.array( [[0.0, 0.0, 0.0], pts_e_z0[len(pts_e_z0)/2.0]] )
 efield_color = (1, 0, 0, 1)
 efield_color_z0 = (1, 1, 1, 1)
 efield_color_arrow = (1, 1, 1, 1)
-linewidth = 2.0
+linewidth = 4.0
 linewidth2Dpol = 2.0
 linewidth2Defieldvector = 10.0
 

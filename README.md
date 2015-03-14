@@ -18,7 +18,7 @@ BYU ECEn 360 Electromagnetics - Winter 2015
 
 **View IPython Notebooks Without Installing Any Software**: 
 
-Click [here](http://nbviewer.ipython.org/github/gregnordin/ECEn360_W15/tree/master/transmission_lines/) for the transmission line ipython notebooks. The notebook files end in ".ipynb". Note that clicking on a notebook file renders a **static** html page in your browser (made with nbviewer.ipython.org). You therefore can't execute any of the commands, but you will be able to see the notebook contents without any problem.
+Click [here](http://nbviewer.ipython.org/github/gregnordin/ECEn360_W15/tree/master/) for the transmission line ipython notebooks. The notebook files end in ".ipynb". Note that clicking on a notebook file renders a **static** html page in your browser (made with nbviewer.ipython.org). You therefore can't execute any of the commands, but you will be able to see the notebook contents without any problem.
 
 **Download and Use IPython Notebooks**:
 
